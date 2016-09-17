@@ -11,6 +11,7 @@ $results = $api
     'af-id' => 11111111
   ])
   ->start(0)
+  ->count(25)
   ->viewComplete()
   ->search();
 var_dump($results);
