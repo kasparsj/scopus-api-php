@@ -48,9 +48,9 @@ class SearchApi
     /**
      * @return SearchQuery
      */
-    public function newQuery()
+    public function query(array $query = array())
     {
-        return new SearchQuery($this);
+        return new SearchQuery($this, $query);
     }
 
     /**

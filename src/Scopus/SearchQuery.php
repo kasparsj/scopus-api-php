@@ -19,13 +19,13 @@ class SearchQuery
 
     protected $view;
     
-    public function __construct(SearchApi $searchApi)
+    public function __construct(SearchApi $searchApi, $query = array())
     {
         $this->searchApi = $searchApi;
         $this->apiKey = $searchApi->getApiKey();
+        $this->query = $query;
         $this->start = 0;
         $this->count = 25;
-        $this->query = null;
         $this->view = self::VIEW_STANDARD;
     }
     
