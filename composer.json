@@ -1,0 +1,15 @@
+{
+  "name": "kasparsj/scopus-search-api",
+  "description": "Scopus search API",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kaspars Jaudzems",
+      "email": "kasparsj@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "6.2.1"
+  }
+}
