@@ -10,7 +10,7 @@ class SearchApi
     const TIMEOUT = 2.0;
     
     protected $apiKey;
-
+    
     /**
      * SearchApi constructor.
      * @param string $apiKey
@@ -30,20 +30,37 @@ class SearchApi
     }
 
     /**
-     * @param array $query
-     * @param int $startIndex
-     * @param int $itemsPerPage
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+    }
+
+    /**
+     * @return SearchQuery
+     */
+    public function newQuery()
+    {
+        return new SearchQuery($this);
+    }
+
+    /**
+     * @param SearchQuery $query
      * @return SearchResults|null
      */
-    public function query(array $query, $startIndex = 0, $itemsPerPage = 25)
+    public function search(SearchQuery $query)
     {
         $response = $this->client->get('', [
-            'query' => [
-                'query' => $query,
-                'start' => $startIndex,
-                'count' => $itemsPerPage,
-                'apiKey' => $this->apiKey
-            ]
+            'query' => $query->toArray()
         ]);
         if ($response->getStatusCode() === 200) {
             return new SearchResults(json_decode($response->getBody(), true));
