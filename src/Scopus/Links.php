@@ -26,12 +26,12 @@ class Links
     
     public function getPrev()
     {
-        return $this->links['prev'];
+        return isset($this->links['prev']) ? $this->links['prev'] : null;
     }
     
     public function getNext()
     {
-        return $this->links['next'];
+        return isset($this->links['next']) ? $this->links['next'] : null;
     }
     
     public function getLast()
