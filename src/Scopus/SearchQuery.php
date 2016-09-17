@@ -11,9 +11,9 @@ class SearchQuery
     
     protected $apiKey;
 
-    protected $startIndex;
+    protected $start;
 
-    protected $itemsPerPage;
+    protected $count;
 
     protected $query;
 
@@ -23,30 +23,32 @@ class SearchQuery
     {
         $this->searchApi = $searchApi;
         $this->apiKey = $searchApi->getApiKey();
-        $this->startIndex = 0;
-        $this->itemsPerPage = 25;
+        $this->start = 0;
+        $this->count = 25;
         $this->query = null;
         $this->view = self::VIEW_STANDARD;
     }
     
-    public function getStartIndex()
+    public function getStart()
     {
-        return $this->startIndex;
+        return $this->start;
     }
 
-    public function setStartIndex($startIndex)
+    public function start($startIndex)
     {
-        $this->startIndex = $startIndex;
+        $this->start = $startIndex;
+        return $this;
     }
 
-    public function getItemsPerPage()
+    public function getCount()
     {
-        return $this->itemsPerPage;
+        return $this->count;
     }
 
-    public function setItemsPerPage($itemsPerPage)
+    public function count($count)
     {
-        $this->itemsPerPage =  $itemsPerPage;
+        $this->count = $count;
+        return $this;
     }
 
     public function getQuery()
@@ -54,9 +56,10 @@ class SearchQuery
         return $this->query;
     }
 
-    public function setQuery(array $query)
+    public function query(array $query)
     {
         $this->query = $query;
+        return $this;
     }
 
     public function getView()
@@ -64,9 +67,16 @@ class SearchQuery
         return $this->view;
     }
 
-    public function setView($view)
+    public function viewStandard()
     {
-        $this->view = $view;
+        $this->view = self::VIEW_STANDARD;
+        return $this;
+    }
+    
+    public function viewComplete()
+    {
+        $this->view = self::VIEW_COMPLETE;
+        return $this;
     }
 
     public function search()
@@ -78,8 +88,8 @@ class SearchQuery
     {
         return [
             'query' => $this->query,
-            'start' => $this->startIndex,
-            'count' => $this->itemsPerPage,
+            'start' => $this->start,
+            'count' => $this->count,
             'view' => $this->view,
             'apiKey' => $this->apiKey,
         ];
