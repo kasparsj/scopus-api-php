@@ -5,7 +5,7 @@ Very unofficial Scopus Search API for PHP
 
 ```
 $apiKey = "11111111111111111111111111111111";
-$api = new SearchApi($apiKey);
+$api = new Scopus\SearchApi($apiKey);
 $results = $api
   ->query([
     'af-id' => 11111111
