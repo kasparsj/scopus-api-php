@@ -53,6 +53,16 @@ class Entry
         return $this->data['prism:pageRange'];
     }
     
+    public function getStartPage()
+    {
+        return explode('-', $this->getPageRange())[0];
+    }
+    
+    public function getEndPage()
+    {
+        return explode('-', $this->getPageRange())[1];
+    }
+    
     public function getCoverDate()
     {
         return $this->data['prism:coverDate'];
