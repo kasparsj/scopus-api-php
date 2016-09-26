@@ -36,6 +36,13 @@ class Entry
         return $this->data['dc:creator'];
     }
     
+    public function getCreatorAuthor()
+    {
+        return array_filter($this->getAuthors(), function(EntryAuthor $author) {
+            return $author->getName() === $this->getCreator();
+        })[0];
+    }
+    
     public function getPublicationName()
     {
         return $this->data['prism:publicationName'];
