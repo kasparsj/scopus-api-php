@@ -5,7 +5,7 @@ Very unofficial Scopus Search API for PHP
 
 ```
 $apiKey = "11111111111111111111111111111111";
-$api = new Scopus\SearchApi($apiKey);
+$api = new Scopus\ScopusApi($apiKey);
 $results = $api
   ->query([
     'af-id' => 11111111
@@ -15,4 +15,17 @@ $results = $api
   ->viewComplete()
   ->search();
 var_dump($results);
+
+foreach ($results->getEntries() as $entry) {
+    $abstractUrl = $entry->getLinks()->getSelf();
+    $abstract = $api->retrieve($abstractUrl);
+    var_dump($abstract);
+    
+    $authors = $entry->getAuthors();
+    foreach ($authors as $author) {
+        $authorUrl = $author->getUrl();
+        $author = $api->retrieve($authorUrl):
+        var_dump($author);
+    }
+}
 ```

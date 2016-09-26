@@ -23,4 +23,9 @@ class EntryAuthor extends AuthorName
     {
         return $this->data['afid'][0]['$'];
     }
+    
+    public function getUrl()
+    {
+        return $this->data['author-url'];
+    }
 }
