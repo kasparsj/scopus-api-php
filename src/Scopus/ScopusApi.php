@@ -60,7 +60,12 @@ class ScopusApi
      */
     public function retrieve($uri, array $options = [])
     {
+        if (!isset($options['apiKey']) && $this->apiKey) {
+            $options['apiKey'] = $this->apiKey;
+        }
+        
         $response = $this->client->get($uri, $options);
+        
         if ($response->getStatusCode() === 200) {
             $json = json_decode($response->getBody(), true);
             switch (key($json)) {
