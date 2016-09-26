@@ -7,6 +7,9 @@ class Entry
     /** @var array */
     protected $data;
     
+    /** @var EntryLinks */
+    protected $links;
+    
     /** @var Affiliation[] */
     protected $affiliations;
     
@@ -16,6 +19,11 @@ class Entry
     public function __construct(array $data)
     {
         $this->data = $data;
+    }
+
+    public function getLinks()
+    {
+        return $this->links ?: $this->links = new EntryLinks($this->data['link']);
     }
     
     public function getTitle()
@@ -112,9 +120,11 @@ class Entry
     
     public function getAuthors()
     {
-        return $this->authors ?: $this->authors = array_map(function($author) {
-            return new Author($author);
-        }, $this->data['author']);
+        if (isset($this->data['author'])) {
+            return $this->authors ?: $this->authors = array_map(function($author) {
+                return new Author($author);
+            }, $this->data['author']);
+        }
     }
     
     public function getAuthkeywords()

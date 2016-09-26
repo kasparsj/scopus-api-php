@@ -2,23 +2,8 @@
 
 namespace Scopus;
 
-class Links
+class SearchLinks extends AbstractLinks
 {
-    protected $links;
-    
-    public function __construct(array $links)
-    {
-        $this->links = [];
-        foreach ($links as $link) {
-            $this->links[$link['@ref']] = $links['@href'];
-        }
-    }
-    
-    public function getSelf()
-    {
-        return $this->links['self'];
-    }
-    
     public function getFirst()
     {
         return $this->links['first'];

@@ -7,7 +7,7 @@ class SearchResults
     /** @var array */
     protected $data;
     
-    /** @var Links */
+    /** @var SearchLinks */
     protected $links;
     
     /** @var Entry[] */
@@ -40,7 +40,7 @@ class SearchResults
     
     public function getLinks()
     {
-        return $this->links ?: $this->links = new Links($this->data['link']);
+        return $this->links ?: $this->links = new SearchLinks($this->data['link']);
     }
     
     public function getEntries()
