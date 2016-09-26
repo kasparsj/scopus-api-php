@@ -19,7 +19,7 @@ class SearchQuery
 
     protected $view;
     
-    public function __construct(ScopusApi $searchApi, $query = array())
+    public function __construct(ScopusApi $searchApi, $query)
     {
         $this->searchApi = $searchApi;
         $this->apiKey = $searchApi->getApiKey();
@@ -56,7 +56,7 @@ class SearchQuery
         return $this->query;
     }
 
-    public function query(array $query)
+    public function query($query)
     {
         $this->query = $query;
         return $this;

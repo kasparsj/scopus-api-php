@@ -49,7 +49,7 @@ class ScopusApi
     /**
      * @return SearchQuery
      */
-    public function query(array $query = array())
+    public function query($query)
     {
         return new SearchQuery($this, $query);
     }
