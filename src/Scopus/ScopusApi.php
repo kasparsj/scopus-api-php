@@ -65,13 +65,13 @@ class ScopusApi
             $json = json_decode($response->getBody(), true);
             switch (key($json)) {
                 case 'search-results':
-                    return new SearchResults($json);
+                    return new SearchResults($json['search-results']);
                     break;
                 case 'abstracts-retrieval-response':
-                    return new Abstracts($json);
+                    return new Abstracts($json['abstracts-retrieval-response']);
                     break;
                 case 'author-retrieval-response':
-                    return new Author($json);
+                    return new Author($json['author-retrieval-response']);
                     break;
             }
         }
