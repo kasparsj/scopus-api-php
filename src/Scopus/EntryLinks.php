@@ -2,7 +2,7 @@
 
 namespace Scopus;
 
-class EntryLinks extends AbstractLinks
+class EntryLinks extends BaseLinks
 {
     public function getAuthorAffiliation()
     {

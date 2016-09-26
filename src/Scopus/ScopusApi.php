@@ -4,9 +4,9 @@ namespace Scopus;
 
 use GuzzleHttp\Client;
 
-class SearchApi
+class ScopusApi
 {
-    const BASE_URI = 'https://api.elsevier.com/content/search/scopus';
+    const SEARCH_URI = 'https://api.elsevier.com/content/search/scopus';
     const TIMEOUT = 2.0;
     
     protected $apiKey;
@@ -14,14 +14,12 @@ class SearchApi
     /**
      * SearchApi constructor.
      * @param string $apiKey
-     * @param string $baseUri
      * @param float $timeout
      */
-    public function __construct($apiKey, $baseUri = self::BASE_URI, $timeout = self::TIMEOUT)
+    public function __construct($apiKey, $timeout = self::TIMEOUT)
     {
         $this->apiKey = $apiKey;
         $this->client = new Client([
-            'base_url' => $baseUri,
             'timeout' => $timeout,
             'headers' => [
                 'Accept' => 'application/json',
@@ -54,16 +52,25 @@ class SearchApi
     }
 
     /**
-     * @param SearchQuery $query
-     * @return SearchResults|null
+     * @param string $link
+     * @param array $options
      */
-    public function search(SearchQuery $query)
+    public function retrieve($uri, $options)
     {
-        $response = $this->client->get('', [
-            'query' => $query->toArray()
-        ]);
+        $response = $this->client->get($uri, $options);
         if ($response->getStatusCode() === 200) {
-            return new SearchResults(json_decode($response->getBody(), true));
+            $json = json_decode($response->getBody(), true);
+            switch (key($json)) {
+                case 'search-results':
+                    return new SearchResults($json);
+                    break;
+                case 'abstracts-retrieval-response':
+                    return new Abstracts($json);
+                    break;
+                case 'author-retrieval-response':
+                    return new Author($json);
+                    break;
+            }
         }
     }
 }

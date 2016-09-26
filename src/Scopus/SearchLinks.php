@@ -2,7 +2,7 @@
 
 namespace Scopus;
 
-class SearchLinks extends AbstractLinks
+class SearchLinks extends BaseLinks
 {
     public function getFirst()
     {

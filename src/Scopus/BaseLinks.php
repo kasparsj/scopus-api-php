@@ -2,7 +2,7 @@
 
 namespace Scopus;
 
-abstract class AbstractLinks
+abstract class BaseLinks
 {
     /** @var array */
     protected $links;

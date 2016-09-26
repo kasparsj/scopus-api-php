@@ -13,7 +13,7 @@ class Entry
     /** @var Affiliation[] */
     protected $affiliations;
     
-    /** @var Author[] */
+    /** @var EntryAuthor[] */
     protected $authors;
     
     public function __construct(array $data)
@@ -122,7 +122,7 @@ class Entry
     {
         if (isset($this->data['author'])) {
             return $this->authors ?: $this->authors = array_map(function($author) {
-                return new Author($author);
+                return new EntryAuthor($author);
             }, $this->data['author']);
         }
     }
