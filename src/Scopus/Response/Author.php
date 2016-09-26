@@ -1,6 +1,6 @@
 <?php
 
-namespace Scopus;
+namespace Scopus\Response;
 
 class Author
 {

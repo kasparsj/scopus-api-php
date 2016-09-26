@@ -3,6 +3,9 @@
 namespace Scopus;
 
 use GuzzleHttp\Client;
+use Scopus\Response\Abstracts;
+use Scopus\Response\Author;
+use Scopus\Response\SearchResults;
 
 class ScopusApi
 {
