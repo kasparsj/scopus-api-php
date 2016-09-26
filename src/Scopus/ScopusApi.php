@@ -58,7 +58,7 @@ class ScopusApi
      * @param string $link
      * @param array $options
      */
-    public function retrieve($uri, $options)
+    public function retrieve($uri, array $options = []))
     {
         $response = $this->client->get($uri, $options);
         if ($response->getStatusCode() === 200) {
