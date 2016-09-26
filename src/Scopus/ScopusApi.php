@@ -60,8 +60,8 @@ class ScopusApi
      */
     public function retrieve($uri, array $options = [])
     {
-        if (!isset($options['apiKey']) && $this->apiKey) {
-            $options['apiKey'] = $this->apiKey;
+        if (!isset($options['query']['apiKey']) && $this->apiKey) {
+            $options['query']['apiKey'] = $this->apiKey;
         }
         
         $response = $this->client->get($uri, $options);
