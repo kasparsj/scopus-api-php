@@ -13,8 +13,6 @@
     "guzzlehttp/guzzle": "6.2.1"
   },
   "autoload": {
-    "autoload": {
-      "psr-0": { "Scopus\\": "src/" }
-    }
+    "psr-0": { "Scopus\\": "src/" }
   }
 }
