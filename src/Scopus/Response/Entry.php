@@ -26,6 +26,16 @@ class Entry
         return $this->links ?: $this->links = new EntryLinks($this->data['link']);
     }
     
+    public function getUrl()
+    {
+        return $this->data['prism:url'];
+    }
+    
+    public function getIdentifier()
+    {
+        return $this->data['dc:identifier'];
+    }
+    
     public function getTitle()
     {
         return $this->data['dc:title'];
@@ -90,7 +100,7 @@ class Entry
     
     public function getDoi()
     {
-        return $this->data['prism:doi'];
+        return isset($this->data['prism:doi']) ? $this->data['prism:doi'] : null;
     }
     
     public function getDescription()
