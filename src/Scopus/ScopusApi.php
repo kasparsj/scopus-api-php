@@ -71,7 +71,7 @@ class ScopusApi
                     return new Abstracts($json['abstracts-retrieval-response']);
                     break;
                 case 'author-retrieval-response':
-                    return new Author($json['author-retrieval-response']);
+                    return new Author($json['author-retrieval-response'][0]);
                     break;
             }
         }
