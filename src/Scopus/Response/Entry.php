@@ -45,7 +45,10 @@ class Entry
     {
         return $this->data['dc:creator'];
     }
-    
+
+    /**
+     * @return EntryAuthor
+     */
     public function getCreatorAuthor()
     {
         return array_filter($this->getAuthors(), function(EntryAuthor $author) {
