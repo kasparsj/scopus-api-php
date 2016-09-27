@@ -51,9 +51,9 @@ class Entry
      */
     public function getCreatorAuthor()
     {
-        return reset(array_filter($this->getAuthors(), function(EntryAuthor $author) {
+        return array_values(array_filter($this->getAuthors(), function(EntryAuthor $author) {
             return $author->getName() === $this->getCreator();
-        }));
+        }))[0];
     }
     
     public function getPublicationName()
