@@ -81,9 +81,7 @@ class SearchQuery
 
     public function search()
     {
-        return $this->searchApi->retrieve(ScopusApi::SEARCH_URI, [
-            'query' => $this->toArray()
-        ]);
+        return $this->searchApi->search($this->toArray());
     }
     
     public function toArray()

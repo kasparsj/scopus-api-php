@@ -10,6 +10,9 @@ use Scopus\Response\SearchResults;
 class ScopusApi
 {
     const SEARCH_URI = 'https://api.elsevier.com/content/search/scopus';
+    const ABSTRACT_URI = 'https://api.elsevier.com/content/abstract/scopus_id/';
+    const AUTHOR_URI = 'https://api.elsevier.com/content/author/author_id/';
+    const AFFILIATION_URI = 'https://api.elsevier.com/content/affiliation/affiliation_id/';
     const TIMEOUT = 2.0;
     
     protected $apiKey;
@@ -78,7 +81,33 @@ class ScopusApi
                 case 'author-retrieval-response':
                     return new Author($json['author-retrieval-response'][0]);
                     break;
+                case 'author-retrieval-response-list':
+                    return array_map(function($data) {
+                        return new Author($data);
+                    }, $json['author-retrieval-response-list']['author-retrieval-response']);
             }
         }
+    }
+    
+    public function search(array $query)
+    {
+        return $this->retrieve(self::SEARCH_URI, [
+            'query' => $query,
+        ]);
+    }
+
+    public function retrieveAbstract($scopusId)
+    {
+        return $this->retrieve(self::ABSTRACT_URI, $scopusId);
+    }
+
+    public function retrieveAuthor($authorId)
+    {
+        return $this->retrieve(self::AUTHOR_URI . $authorId);
+    }
+    
+    public function retrieveAffiliation($affiliationId)
+    {
+        return $this->retrieve(self::AFFILIATION_URI . $affiliationId);
     }
 }

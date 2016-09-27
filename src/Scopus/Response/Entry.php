@@ -143,7 +143,10 @@ class Entry
     {
         return $this->data['subtypeDescription'];
     }
-    
+
+    /**
+     * @return EntryAuthor[]|null
+     */
     public function getAuthors()
     {
         if (isset($this->data['author'])) {
