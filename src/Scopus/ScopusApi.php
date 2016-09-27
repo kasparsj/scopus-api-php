@@ -103,7 +103,15 @@ class ScopusApi
 
     public function retrieveAuthor($authorId)
     {
+        if (is_array($authorId)) {
+            $authorId = implode(',', $authorId);
+        }
         return $this->retrieve(self::AUTHOR_URI . $authorId);
+    }
+    
+    public function retrieveAuthors($authorIds)
+    {
+        return $this->retrieveAuthor($authorIds);
     }
     
     public function retrieveAffiliation($affiliationId)
