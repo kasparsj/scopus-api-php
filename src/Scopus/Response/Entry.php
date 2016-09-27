@@ -80,12 +80,21 @@ class Entry
     
     public function getStartPage()
     {
-        return explode('-', $this->getPageRange())[0];
+        $pageRange = $this->getPageRange();
+        if ($pageRange) {
+            return explode('-', $pageRange)[0];
+        }
     }
     
     public function getEndPage()
     {
-        return explode('-', $this->getPageRange())[1];
+        $pageRange = $this->getPageRange();
+        if ($pageRange) {
+            $startEndPage = explode('-', $pageRange);
+            if (count($startEndPage) > 1) {
+                return $startEndPage[1];
+            }
+        }
     }
     
     public function getCoverDate()
