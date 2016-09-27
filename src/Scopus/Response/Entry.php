@@ -38,7 +38,7 @@ class Entry
     
     public function getTitle()
     {
-        return $this->data['dc:title'];
+        return isset($this->data['dc:title']) ? $this->data['dc:title'] : null;
     }
     
     public function getCreator()
