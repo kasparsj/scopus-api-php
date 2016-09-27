@@ -55,7 +55,7 @@ class Entry
     
     public function getPublicationName()
     {
-        return $this->data['prism:publicationName'];
+        return isset($this->data['prism:publicationName']) ? $this->data['prism:publicationName'] : null;
     }
     
     public function getIssn()
