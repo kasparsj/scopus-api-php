@@ -2,6 +2,7 @@
 
 namespace Scopus;
 
+use Exception;
 use GuzzleHttp\Client;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
@@ -102,6 +103,9 @@ class ScopusApi
     {
         if (is_array($authorId)) {
             $authorId = implode(',', $authorId);
+        }
+        if (explode(',', $authorId) > 25) {
+            throw new Exception("The maximum number of 25 author id's exceeded!");
         }
         return $this->retrieve(self::AUTHOR_URI . $authorId);
     }
