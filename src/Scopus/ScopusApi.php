@@ -104,7 +104,7 @@ class ScopusApi
         if (is_array($authorId)) {
             $authorId = implode(',', $authorId);
         }
-        if (explode(',', $authorId) > 25) {
+        if (count(explode(',', $authorId)) > 25) {
             throw new Exception("The maximum number of 25 author id's exceeded!");
         }
         return $this->retrieve(self::AUTHOR_URI . $authorId);
