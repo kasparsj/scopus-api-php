@@ -22,20 +22,26 @@ class Source
         return isset($this->data['sourcetitle-abbrev']) ? $this->data['sourcetitle-abbrev'] : null;
     }
     
+    protected function getVolisspag()
+    {
+        return isset($this->data['volisspag']) ? $this->data['volisspag'] : null;
+    }
+    
     protected function getPageRange()
     {
-        return $this->data['volisspag']['pagerange'];
+        $volisspag = $this->getVolisspag();
+        return $volisspag && isset($volisspag['pagerange']) ? $volisspag['pagerange'] : null;
     }
     
     public function getStartPage()
     {
         $pageRange = $this->getPageRange();
-        return isset($pageRange['@first']) ? $pageRange['@first'] : null;
+        return $pageRange && isset($pageRange['@first']) ? $pageRange['@first'] : null;
     }
     
     public function getEndPage()
     {
         $pageRange = $this->getPageRange();
-        return isset($pageRange['@last']) ? $pageRange['@last'] : null;
+        return $pageRange && isset($pageRange['@last']) ? $pageRange['@last'] : null;
     }
 }
