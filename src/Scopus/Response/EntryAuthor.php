@@ -6,7 +6,9 @@ class EntryAuthor extends AuthorName
 {
     public function __construct(array $data)
     {
-        parent::__construct($data);
+        parent::__construct(array_merge($data, [
+            'indexed-name' => $data['authname']
+        ]));
     }
     
     public function getId()
