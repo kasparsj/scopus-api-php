@@ -79,9 +79,12 @@ class Entry extends AbstractCoredata
      */
     public function findAuthorByName($name)
     {
-        return array_values(array_filter($this->getAuthors(), function(EntryAuthor $author) use ($name) {
+        $matches = array_filter($this->getAuthors(), function(EntryAuthor $author) use ($name) {
             return $author->getName() === $name;
-        }))[0];
+        });
+        if ($matches) {
+            return array_values($matches)[0];
+        }
     }
     
     public function getAuthkeywords()

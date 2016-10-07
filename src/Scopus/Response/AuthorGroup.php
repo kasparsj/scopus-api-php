@@ -33,8 +33,11 @@ class AuthorGroup
      */
     public function findAuthorByName($name)
     {
-        return array_values(array_filter($this->getAuthors(), function(AbstractAuthor $author) use ($name) {
+        $matches = array_filter($this->getAuthors(), function(AbstractAuthor $author) use ($name) {
             return $author->getIndexedName() === $name;
-        }))[0];
+        });
+        if ($matches) {
+            return array_values($matches)[0];
+        }
     }
 }
