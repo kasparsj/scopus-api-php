@@ -29,7 +29,7 @@ class AuthorGroup
 
     /**
      * @param $name
-     * @return EntryAuthor
+     * @return AbstractAuthor
      */
     public function findAuthorByName($name)
     {
