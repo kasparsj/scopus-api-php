@@ -26,4 +26,15 @@ class AuthorGroup
             }, $this->data['author']);
         }
     }
+
+    /**
+     * @param $name
+     * @return EntryAuthor
+     */
+    public function findAuthorByName($name)
+    {
+        return array_values(array_filter($this->getAuthors(), function(AbstractAuthor $author) use ($name) {
+            return $author->getIndexedName() === $name;
+        }))[0];
+    }
 }
