@@ -26,4 +26,9 @@ class AuthorName
     {
         return $this->data['initials'];
     }
+    
+    public function getIndexedName()
+    {
+        return $this->data['indexed-name'];
+    }
 }

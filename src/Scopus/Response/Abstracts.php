@@ -10,6 +10,9 @@ class Abstracts
     /** @var AbstractCoredata */
     protected $coredata;
     
+    /** @var AbstractItem */
+    protected $item;
+    
     public function __construct(array $data)
     {
         $this->data = $data;
@@ -18,5 +21,10 @@ class Abstracts
     public function getCoredata()
     {
         return $this->coredata ?: $this->coredata = new AbstractCoredata($this->data['coredata']);
+    }
+    
+    public function getItem()
+    {
+        return $this->item ?: $this->item = new AbstractItem($this->data['item']);
     }
 }

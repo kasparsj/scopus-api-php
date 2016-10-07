@@ -77,6 +77,10 @@ class ScopusApi
                     return new SearchResults($json['search-results']);
                 case 'abstracts-retrieval-response':
                     return new Abstracts($json['abstracts-retrieval-response']);
+                case 'abstracts-retrieval-multidoc-response':
+                    return array_map(function($data) {
+                        return new Abstracts($data);
+                    }, $json['abstracts-retrieval-multidoc-response']['abstracts-retrieval-response']);
                 case 'author-retrieval-response':
                     return new Author($json['author-retrieval-response'][0]);
                 case 'author-retrieval-response-list':
@@ -94,11 +98,49 @@ class ScopusApi
         ]);
     }
 
+    /**
+     * @param $scopusId
+     * @return Abstracts|Abstracts[]
+     * @throws Exception
+     */
     public function retrieveAbstract($scopusId)
     {
-        return $this->retrieve(self::ABSTRACT_URI, $scopusId);
+        if (is_array($scopusId)) {
+            $scopusId = implode(',', $scopusId);
+        }
+        if (count(explode(',', $scopusId)) > 25) {
+            throw new Exception("The maximum number of 25 abstract id's exceeded!");
+        }
+        return $this->retrieve(self::ABSTRACT_URI . $scopusId);
     }
 
+    /**
+     * @param $scopusIds
+     * @return Abstracts[]
+     */
+    public function retrieveAbstracts($scopusIds)
+    {
+        $scopusIds = array_unique($scopusIds);
+        if (count($scopusIds) > 1) {
+            $chunks = array_chunk($scopusIds, 25);
+            $abstracts = [];
+            foreach ($chunks as $chunk) {
+                $abstracts = array_merge($abstracts, array_combine($chunk, $this->retrieveAbstract($chunk)));
+            }
+            return $abstracts;
+        }
+        else {
+            return [
+                $scopusIds[0] => $this->retrieveAbstract($scopusIds[0]),
+            ];
+        }
+    }
+
+    /**
+     * @param $authorId
+     * @return Author|Author[]
+     * @throws Exception
+     */
     public function retrieveAuthor($authorId)
     {
         if (is_array($authorId)) {
@@ -109,10 +151,27 @@ class ScopusApi
         }
         return $this->retrieve(self::AUTHOR_URI . $authorId);
     }
-    
+
+    /**
+     * @param $authorIds
+     * @return Author[]
+     */
     public function retrieveAuthors($authorIds)
     {
-        return $this->retrieveAuthor($authorIds);
+        $scopusIds = array_unique($authorIds);
+        if (count($scopusIds) > 1) {
+            $chunks = array_chunk($authorIds, 25);
+            $authors = [];
+            foreach ($chunks as $chunk) {
+                $authors = array_merge($authors, array_combine($chunk, $this->retrieveAuthor($chunk)));
+            }
+            return $authors;
+        }
+        else {
+            return [
+                $authorIds[0] => $this->retrieveAuthor($authorIds[0]),
+            ];
+        }
     }
     
     public function retrieveAffiliation($affiliationId)
