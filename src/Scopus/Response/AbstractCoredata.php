@@ -21,6 +21,14 @@ class AbstractCoredata
     {
         return $this->data['dc:identifier'];
     }
+    
+    public function getScopusId()
+    {
+        $identifier = $this->getIdentifier();
+        if (substr($identifier, 0, 10) === 'SCOPUS_ID:') {
+            return explode(':', $identifier, 2)[1];
+        }
+    }
 
     public function getDoi()
     {
