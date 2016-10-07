@@ -7,28 +7,32 @@ class AuthorName
     /** @var array */
     protected $data;
     
-    public function __construct(array $data)
+    /** @var string */
+    protected $ns;
+    
+    public function __construct(array $data, $ns = '')
     {
         $this->data = $data;
+        $this->ns = $ns ? rtrim($ns, ':').':' : '';
     }
 
     public function getGivenName()
     {
-        return $this->data['given-name'];
+        return $this->data[$this->ns.'given-name'];
     }
 
     public function getSurname()
     {
-        return $this->data['surname'];
+        return $this->data[$this->ns.'surname'];
     }
 
     public function getInitials()
     {
-        return $this->data['initials'];
+        return $this->data[$this->ns.'initials'];
     }
     
     public function getIndexedName()
     {
-        return $this->data['indexed-name'];
+        return $this->data[$this->ns.'indexed-name'];
     }
 }
