@@ -15,6 +15,9 @@ class AuthorGroup
         $this->data = $data;
     }
 
+    /**
+     * @return AbstractAuthor[]
+     */
     public function getAuthors()
     {
         if (isset($this->data['author'])) {
