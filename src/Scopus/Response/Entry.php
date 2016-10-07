@@ -51,9 +51,7 @@ class Entry
      */
     public function getCreatorAuthor()
     {
-        return array_values(array_filter($this->getAuthors(), function(EntryAuthor $author) {
-            return $author->getName() === $this->getCreator();
-        }))[0];
+        return $this->findAuthorByName($this->getCreator());
     }
     
     public function getPublicationName()
@@ -157,6 +155,13 @@ class Entry
                 return new EntryAuthor($author);
             }, $this->data['author']);
         }
+    }
+
+    public function findAuthorByName($name)
+    {
+        return array_values(array_filter($this->getAuthors(), function(EntryAuthor $author) use ($name) {
+            return $author->getName() === $name;
+        }))[0];
     }
     
     public function getAuthkeywords()
