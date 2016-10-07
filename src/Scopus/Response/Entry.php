@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class Entry
+class Entry extends AbstractCoredata
 {
     /** @var array */
     protected $data;
@@ -18,27 +18,12 @@ class Entry
     
     public function __construct(array $data)
     {
-        $this->data = $data;
+        parent::__construct($data);
     }
 
     public function getLinks()
     {
         return $this->links ?: $this->links = new EntryLinks($this->data['link']);
-    }
-    
-    public function getUrl()
-    {
-        return $this->data['prism:url'];
-    }
-    
-    public function getIdentifier()
-    {
-        return $this->data['dc:identifier'];
-    }
-    
-    public function getTitle()
-    {
-        return isset($this->data['dc:title']) ? $this->data['dc:title'] : null;
     }
     
     public function getCreator()
@@ -54,73 +39,9 @@ class Entry
         return $this->findAuthorByName($this->getCreator());
     }
     
-    public function getPublicationName()
-    {
-        return isset($this->data['prism:publicationName']) ? $this->data['prism:publicationName'] : null;
-    }
-    
-    public function getIssn()
-    {
-        return $this->data['prism:issn'];
-    }
-    
-    public function getEIssn()
-    {
-        return $this->data['prism:eIssn'];
-    }
-    
-    public function getVolume()
-    {
-        return $this->data['prism:volume'];
-    }
-    
-    public function getPageRange()
-    {
-        return $this->data['prism:pageRange'];
-    }
-    
-    public function getStartPage()
-    {
-        $pageRange = $this->getPageRange();
-        if ($pageRange) {
-            return explode('-', $pageRange)[0];
-        }
-    }
-    
-    public function getEndPage()
-    {
-        $pageRange = $this->getPageRange();
-        if ($pageRange) {
-            $startEndPage = explode('-', $pageRange);
-            if (count($startEndPage) > 1) {
-                return $startEndPage[1];
-            }
-        }
-    }
-    
-    public function getCoverDate()
-    {
-        return $this->data['prism:coverDate'];
-    }
-    
     public function getCoverDisplayDate()
     {
         return $this->data['prism:coverDisplayDate'];
-    }
-    
-    public function getDoi()
-    {
-        return isset($this->data['prism:doi']) ? $this->data['prism:doi'] : null;
-    }
-    
-    public function getDescription()
-    {
-        return $this->data['dc:description'];
-    }
-    
-    public function getCitedbyCount()
-    {
-        return $this->data['citedby-count'];
     }
     
     public function getAffiliations()
@@ -128,11 +49,6 @@ class Entry
         return $this->affiliations ?: $this->affiliations = array_map(function($affiliation) {
             return new Affiliation($affiliation);
         }, $this->data['affiliation']);
-    }
-    
-    public function getAggregationType()
-    {
-        return $this->data['prism:aggregationType'];
     }
     
     public function getSubtype()
