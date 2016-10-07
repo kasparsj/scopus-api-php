@@ -12,6 +12,9 @@ class BibrecordHead
     
     /** @var Correspondence */
     protected $correspondence;
+    
+    /** @var Source */
+    protected $source;
 
     public function __construct(array $data)
     {
@@ -26,5 +29,10 @@ class BibrecordHead
     public function getCorrespondence()
     {
         return $this->correspondence ?: $this->correspondence = new Correspondence($this->data['correspondence']);
+    }
+    
+    public function getSource()
+    {
+        return $this->source ?: $this->source = new Source($this->data['source']);
     }
 }

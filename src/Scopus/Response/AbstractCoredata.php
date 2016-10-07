@@ -47,7 +47,7 @@ class AbstractCoredata
 
     public function getPageRange()
     {
-        return $this->data['prism:pageRange'];
+        return isset($this->data['prism:pageRange']) ? $this->data['prism:pageRange'] : null;
     }
 
     public function getStartPage()
