@@ -79,6 +79,9 @@ class SearchQuery
         return $this;
     }
 
+    /**
+     * @return Response\SearchResults
+     */
     public function search()
     {
         return $this->searchApi->search($this->toArray());

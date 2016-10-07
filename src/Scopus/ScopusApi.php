@@ -90,7 +90,11 @@ class ScopusApi
             }
         }
     }
-    
+
+    /**
+     * @param array $query
+     * @return SearchResults
+     */
     public function search(array $query)
     {
         return $this->retrieve(self::SEARCH_URI, [
