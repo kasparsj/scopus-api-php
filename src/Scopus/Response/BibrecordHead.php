@@ -23,16 +23,22 @@ class BibrecordHead
     
     public function getAuthorGroup()
     {
-        return $this->authorGroup ?: $this->authorGroup = new AuthorGroup($this->data['author-group']);
+        if (isset($this->data['author-group'])) {
+            return $this->authorGroup ?: $this->authorGroup = new AuthorGroup($this->data['author-group']);
+        }
     }
     
     public function getCorrespondence()
     {
-        return $this->correspondence ?: $this->correspondence = new Correspondence($this->data['correspondence']);
+        if (isset($this->data['correspondence'])) {
+            return $this->correspondence ?: $this->correspondence = new Correspondence($this->data['correspondence']);
+        }
     }
     
     public function getSource()
     {
-        return $this->source ?: $this->source = new Source($this->data['source']);
+        if (isset($this->data['source'])) {
+            return $this->source ?: $this->source = new Source($this->data['source']);
+        }
     }
 }
