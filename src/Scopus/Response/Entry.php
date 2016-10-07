@@ -157,6 +157,10 @@ class Entry
         }
     }
 
+    /**
+     * @param $name
+     * @return EntryAuthor
+     */
     public function findAuthorByName($name)
     {
         return array_values(array_filter($this->getAuthors(), function(EntryAuthor $author) use ($name) {
