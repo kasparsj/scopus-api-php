@@ -14,12 +14,12 @@ class Source
     
     public function getTitle()
     {
-        return $this->data['sourcetitle'];
+        return isset($this->data['sourcetitle']) ? $this->data['sourcetitle'] : null;
     }
     
     public function getTitleAbbrev()
     {
-        return $this->data['sourcetitle-abbrev'];
+        return isset($this->data['sourcetitle-abbrev']) ? $this->data['sourcetitle-abbrev'] : null;
     }
     
     protected function getPageRange()
