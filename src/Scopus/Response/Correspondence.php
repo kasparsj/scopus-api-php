@@ -17,6 +17,8 @@ class Correspondence
     
     public function getPerson()
     {
-        return $this->person ?: $this->person = new CorrespondencePerson($this->data['person']);
+        if (isset($this->data['person'])) {
+            return $this->person ?: $this->person = new CorrespondencePerson($this->data['person']);
+        }
     }
 }
