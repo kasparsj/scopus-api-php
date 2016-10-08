@@ -73,7 +73,9 @@ class ScopusApi
         if ($response->getStatusCode() === 200) {
             $json = json_decode($response->getBody(), true);
             if (!is_array($json)) {
-                throw new Exception('Response could not be decoded for "%s"', $uri);
+                $message = json_last_error_msg();
+                $error = json_last_error();
+                throw new Exception('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri);
             }
             $type = key($json);
             switch ($type) {
