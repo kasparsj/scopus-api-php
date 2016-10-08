@@ -4,6 +4,7 @@ namespace Scopus;
 
 use Exception;
 use GuzzleHttp\Client;
+use JsonException;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
 use Scopus\Response\SearchResults;
@@ -73,11 +74,16 @@ class ScopusApi
         $response = $this->client->get($uri, $options);
         
         if ($response->getStatusCode() === 200) {
-            $json = json_decode($response->getBody(), true);
+            $body = $response->getBody();
+            if (strpos(strtolower($response->getHeader('ContentType')), '/xml') !== false) {
+                $xml = simplexml_load_string($body, "SimpleXMLElement", LIBXML_NOCDATA);
+                $body = json_encode($xml);
+            }
+            $json = json_decode($body, true);
             if (!is_array($json)) {
                 $message = json_last_error_msg();
                 $error = json_last_error();
-                throw new Exception(sprintf('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri));
+                throw new JsonException(sprintf('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri), $error);
             }
             $type = key($json);
             switch ($type) {
@@ -114,10 +120,11 @@ class ScopusApi
 
     /**
      * @param $scopusId
+     * @param array $options
      * @return Abstracts|Abstracts[]
      * @throws Exception
      */
-    public function retrieveAbstract($scopusId)
+    public function retrieveAbstract($scopusId, array $options = [])
     {
         if (is_array($scopusId)) {
             $scopusId = implode(',', $scopusId);
@@ -125,37 +132,39 @@ class ScopusApi
         if (count(explode(',', $scopusId)) > 25) {
             throw new Exception("The maximum number of 25 abstract id's exceeded!");
         }
-        return $this->retrieve(self::ABSTRACT_URI . $scopusId);
+        return $this->retrieve(self::ABSTRACT_URI . $scopusId, $options);
     }
 
     /**
      * @param $scopusIds
+     * @param array $options
      * @return Abstracts[]
      */
-    public function retrieveAbstracts($scopusIds)
+    public function retrieveAbstracts($scopusIds, array $options = [])
     {
         $scopusIds = array_unique($scopusIds);
         if (count($scopusIds) > 1) {
             $chunks = array_chunk($scopusIds, 25);
             $abstracts = [];
             foreach ($chunks as $chunk) {
-                $abstracts = array_merge($abstracts, array_combine($chunk, $this->retrieveAbstract($chunk)));
+                $abstracts = array_merge($abstracts, array_combine($chunk, $this->retrieveAbstract($chunk, $options)));
             }
             return $abstracts;
         }
         else {
             return [
-                $scopusIds[0] => $this->retrieveAbstract($scopusIds[0]),
+                $scopusIds[0] => $this->retrieveAbstract($scopusIds[0], $options),
             ];
         }
     }
 
     /**
      * @param $authorId
+     * @param array $options
      * @return Author|Author[]
      * @throws Exception
      */
-    public function retrieveAuthor($authorId)
+    public function retrieveAuthor($authorId, array $options = [])
     {
         if (is_array($authorId)) {
             $authorId = implode(',', $authorId);
@@ -163,33 +172,34 @@ class ScopusApi
         if (count(explode(',', $authorId)) > 25) {
             throw new Exception("The maximum number of 25 author id's exceeded!");
         }
-        return $this->retrieve(self::AUTHOR_URI . $authorId);
+        return $this->retrieve(self::AUTHOR_URI . $authorId, $options);
     }
 
     /**
      * @param $authorIds
+     * @param array $options
      * @return Author[]
      */
-    public function retrieveAuthors($authorIds)
+    public function retrieveAuthors($authorIds, array $options = [])
     {
         $scopusIds = array_unique($authorIds);
         if (count($scopusIds) > 1) {
             $chunks = array_chunk($authorIds, 25);
             $authors = [];
             foreach ($chunks as $chunk) {
-                $authors = array_merge($authors, array_combine($chunk, $this->retrieveAuthor($chunk)));
+                $authors = array_merge($authors, array_combine($chunk, $this->retrieveAuthor($chunk, $options)));
             }
             return $authors;
         }
         else {
             return [
-                $authorIds[0] => $this->retrieveAuthor($authorIds[0]),
+                $authorIds[0] => $this->retrieveAuthor($authorIds[0], $options),
             ];
         }
     }
     
-    public function retrieveAffiliation($affiliationId)
+    public function retrieveAffiliation($affiliationId, array $options = [])
     {
-        return $this->retrieve(self::AFFILIATION_URI . $affiliationId);
+        return $this->retrieve(self::AFFILIATION_URI . $affiliationId, $options);
     }
 }
