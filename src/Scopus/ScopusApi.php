@@ -83,7 +83,7 @@ class ScopusApi
                     $error = libxml_get_last_error();
                     throw new XmlException(sprintf('Xml response could not be parsed "%s" (%d) for %s', $error->message, $error->code, $uri), $error->code);
                 } 
-                $body = json_encode($xml);
+                $body = json_encode([$xml->getName() => $xml]);
             }
             $json = json_decode($body, true);
             if (!is_array($json)) {
