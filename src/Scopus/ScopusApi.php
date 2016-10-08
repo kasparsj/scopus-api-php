@@ -9,6 +9,7 @@ use Scopus\Exception\XmlException;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
 use Scopus\Response\SearchResults;
+use Scopus\Util\XmlUtil;
 
 class ScopusApi
 {
@@ -83,7 +84,7 @@ class ScopusApi
                     $error = libxml_get_last_error();
                     throw new XmlException(sprintf('Xml response could not be parsed "%s" (%d) for %s', $error->message, $error->code, $uri), $error->code);
                 } 
-                $body = json_encode([$xml->getName() => $xml]);
+                $body = json_encode(XmlUtil::toArray($xml));
             }
             $json = json_decode($body, true);
             if (!is_array($json)) {
