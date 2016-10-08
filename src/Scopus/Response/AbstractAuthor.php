@@ -29,4 +29,9 @@ class AbstractAuthor extends AuthorName
     {
         return $this->preferredName ?: $this->preferredName = new AuthorName($this->data['preferred-name'], 'ce');
     }
+
+    public function getUrl()
+    {
+        return $this->data['author-url'];
+    }
 }
