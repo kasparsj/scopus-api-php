@@ -27,6 +27,6 @@ class AuthorProfile
     {
         return $this->nameVariants ?: $this->nameVariants = array_map(function($nameVariant) {
             return new AuthorName($nameVariant);
-        }, $this->data['name-variant']);
+        }, isset($this->data['name-variant']) ? $this->data['name-variant'] : []);
     }
 }
