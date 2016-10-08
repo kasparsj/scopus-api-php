@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class AuthorName
+class AuthorName implements IAuthorName
 {
     /** @var array */
     protected $data;
