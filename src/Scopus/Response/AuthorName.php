@@ -18,7 +18,7 @@ class AuthorName
 
     public function getGivenName()
     {
-        return $this->data[$this->ns.'given-name'];
+        return isset($this->data[$this->ns.'given-name']) ? $this->data[$this->ns.'given-name'] : null;
     }
 
     public function getSurname()
