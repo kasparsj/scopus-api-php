@@ -77,7 +77,7 @@ class ScopusApi
             if (!is_array($json)) {
                 $message = json_last_error_msg();
                 $error = json_last_error();
-                throw new Exception('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri);
+                throw new Exception(sprintf('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri));
             }
             $type = key($json);
             switch ($type) {
