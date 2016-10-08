@@ -4,7 +4,8 @@ namespace Scopus;
 
 use Exception;
 use GuzzleHttp\Client;
-use JsonException;
+use Scopus\Exception\JsonException;
+use Scopus\Exception\XmlException;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
 use Scopus\Response\SearchResults;
@@ -77,13 +78,17 @@ class ScopusApi
             $body = $response->getBody();
             if (strpos(strtolower($response->getHeader('ContentType')), '/xml') !== false) {
                 $xml = simplexml_load_string($body, "SimpleXMLElement", LIBXML_NOCDATA);
+                if ($xml === false) {
+                    $error = libxml_get_last_error();
+                    throw new XmlException(sprintf('Xml response could not be parsed "%s" (%d) for %s', $error->message, $error->code, $uri), $error->code);
+                } 
                 $body = json_encode($xml);
             }
             $json = json_decode($body, true);
             if (!is_array($json)) {
                 $message = json_last_error_msg();
                 $error = json_last_error();
-                throw new JsonException(sprintf('Response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri), $error);
+                throw new JsonException(sprintf('Json response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri), $error);
             }
             $type = key($json);
             switch ($type) {

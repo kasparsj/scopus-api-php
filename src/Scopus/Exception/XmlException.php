@@ -4,7 +4,7 @@ namespace Scopus\Exception;
 
 use Exception;
 
-class JsonException extends Exception
+class XmlException extends Exception 
 {
 
 }
