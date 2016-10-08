@@ -76,7 +76,8 @@ class ScopusApi
         
         if ($response->getStatusCode() === 200) {
             $body = $response->getBody();
-            if (strpos(strtolower($response->getHeader('ContentType')), '/xml') !== false) {
+            $contentType = $response->getHeader('Content-Type');
+            if ($contentType && strpos(strtolower($contentType[0]), '/xml') !== false) {
                 $xml = simplexml_load_string($body, "SimpleXMLElement", LIBXML_NOCDATA);
                 if ($xml === false) {
                     $error = libxml_get_last_error();
