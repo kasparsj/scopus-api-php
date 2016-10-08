@@ -72,7 +72,11 @@ class ScopusApi
         
         if ($response->getStatusCode() === 200) {
             $json = json_decode($response->getBody(), true);
-            switch (key($json)) {
+            if (!is_array($json)) {
+                throw new Exception('Response could not be decoded for "%s"', $uri);
+            }
+            $type = key($json);
+            switch ($type) {
                 case 'search-results':
                     return new SearchResults($json['search-results']);
                 case 'abstracts-retrieval-response':
@@ -87,6 +91,8 @@ class ScopusApi
                     return array_map(function($data) {
                         return new Author($data);
                     }, $json['author-retrieval-response-list']['author-retrieval-response']);
+                default:
+                    throw new Exception(sprintf('Unsupported response type: "%s" for "%s"', $type, $uri));
             }
         }
     }
