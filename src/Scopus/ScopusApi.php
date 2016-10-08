@@ -59,8 +59,10 @@ class ScopusApi
     }
 
     /**
-     * @param string $link
+     * @param string $uri
      * @param array $options
+     * @return array|Abstracts|Author|SearchResults
+     * @throws Exception
      */
     public function retrieve($uri, array $options = [])
     {
