@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class Abstracts
+class Abstracts implements IAbstract
 {
     /** @var array */
     protected $data;

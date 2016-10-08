@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class EntryAuthor extends AuthorName
+class EntryAuthor extends AuthorName implements IAuthor 
 {
     public function __construct(array $data)
     {

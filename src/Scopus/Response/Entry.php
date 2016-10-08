@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class Entry extends AbstractCoredata
+class Entry extends AbstractCoredata implements IAbstract
 {
     /** @var array */
     protected $data;

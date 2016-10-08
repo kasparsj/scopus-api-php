@@ -2,7 +2,7 @@
 
 namespace Scopus\Response;
 
-class AbstractAuthor extends AuthorName
+class AbstractAuthor extends AuthorName implements IAuthor
 {
     /** @var array */
     protected $data;
