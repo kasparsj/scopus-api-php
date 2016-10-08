@@ -36,7 +36,12 @@ class Entry extends AbstractCoredata
      */
     public function getCreatorAuthor()
     {
-        return $this->findAuthorByName($this->getCreator());
+        $matches = array_filter($this->getAuthors(), function(EntryAuthor $author) {
+            return $author->getName() === $this->getCreator();
+        });
+        if ($matches) {
+            return array_values($matches)[0];
+        }
     }
     
     public function getCoverDisplayDate()
@@ -73,20 +78,6 @@ class Entry extends AbstractCoredata
         }
     }
 
-    /**
-     * @param $name
-     * @return EntryAuthor
-     */
-    public function findAuthorByName($name)
-    {
-        $matches = array_filter($this->getAuthors(), function(EntryAuthor $author) use ($name) {
-            return $author->getName() === $name;
-        });
-        if ($matches) {
-            return array_values($matches)[0];
-        }
-    }
-    
     public function getAuthkeywords()
     {
         return $this->data['authkeywords'];

@@ -37,20 +37,6 @@ class Abstracts
             }, $this->data['authors']['author']);
         }
     }
-
-    /**
-     * @param $name
-     * @return AbstractAuthor
-     */
-    public function findAuthorByName($name)
-    {
-        $matches = array_filter($this->getAuthors(), function(AbstractAuthor $author) use ($name) {
-            return $author->getIndexedName() === $name;
-        });
-        if ($matches) {
-            return array_values($matches)[0];
-        }
-    }
     
     public function getItem()
     {
