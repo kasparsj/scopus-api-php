@@ -42,7 +42,10 @@ class SearchResults
     {
         return $this->links ?: $this->links = new SearchLinks($this->data['link']);
     }
-    
+
+    /**
+     * @return Entry[]
+     */
     public function getEntries()
     {
         return $this->entries ?: $this->entries = array_map(function($entry) {
