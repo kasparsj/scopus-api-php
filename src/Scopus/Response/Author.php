@@ -37,7 +37,9 @@ class Author
     
     public function getProfile()
     {
-        return $this->profile ?: $this->profile = new AuthorProfile($this->data['author-profile']);
+        if (isset($this->data['author-profile'])) {
+            return $this->profile ?: $this->profile = new AuthorProfile($this->data['author-profile']);
+        }
     }
     
     protected function prepareAffiliationData($affiliation)
