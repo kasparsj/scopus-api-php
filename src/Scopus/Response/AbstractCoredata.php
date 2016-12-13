@@ -19,7 +19,7 @@ class AbstractCoredata
     
     public function getIdentifier()
     {
-        return $this->data['dc:identifier'];
+        return isset($this->data['dc:identifier']) ? $this->data['dc:identifier'] : null;
     }
     
     public function getScopusId()
