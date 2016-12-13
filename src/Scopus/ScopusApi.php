@@ -105,11 +105,11 @@ class ScopusApi
                 case 'author-retrieval-response':
                     return new Author($json['author-retrieval-response'][0]);
                 case 'author-retrieval-response-list':
-                    return array_filter(array_map(function($data) {
+                    return array_map(function($data) {
                         if ($data['@status'] === 'found') {
                             return new Author($data);
                         }
-                    }, $json['author-retrieval-response-list']['author-retrieval-response']));
+                    }, $json['author-retrieval-response-list']['author-retrieval-response']);
                 default:
                     throw new Exception(sprintf('Unsupported response type: "%s" for "%s"', $type, $uri));
             }
