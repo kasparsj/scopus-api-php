@@ -51,9 +51,16 @@ class Entry extends AbstractCoredata implements IAbstract
     
     public function getAffiliations()
     {
-        return $this->affiliations ?: $this->affiliations = array_map(function($affiliation) {
-            return new Affiliation($affiliation);
-        }, $this->data['affiliation']);
+        if (isset($this->data['affiliation'])) {
+            return $this->affiliations ?: $this->affiliations = array_map(function($affiliation) {
+                return new Affiliation($affiliation);
+            }, $this->data['affiliation']);
+        }
+    }
+    
+    public function countAffiliations()
+    {
+        return isset($this->data['affiliation']) ? count($this->data['affiliation']) : 0;
     }
     
     public function getSubtype()
@@ -76,6 +83,11 @@ class Entry extends AbstractCoredata implements IAbstract
                 return new EntryAuthor($author);
             }, $this->data['author']);
         }
+    }
+    
+    public function countAuthors()
+    {
+        return isset($this->data['author']) ? count($this->data['author']) : 0;
     }
 
     public function getAuthkeywords()
