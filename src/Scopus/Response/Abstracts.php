@@ -37,6 +37,14 @@ class Abstracts implements IAbstract
             }, $this->data['authors']['author']);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function countAuthors()
+    {
+        return isset($this->data['authors']['author']) ? count($this->data['authors']['author']) : 0;
+    }
     
     public function getItem()
     {
