@@ -48,8 +48,15 @@ class SearchResults
      */
     public function getEntries()
     {
-        return $this->entries ?: $this->entries = array_map(function($entry) {
-            return new Entry($entry);
-        }, $this->data['entry']);
+        if (isset($this->data['entry'])) {
+            return $this->entries ?: $this->entries = array_map(function($entry) {
+                return new Entry($entry);
+            }, $this->data['entry']);
+        }
+    }
+    
+    public function countEntries()
+    {
+        return isset($this->data['entry']) ? count($this->data['entry']) : 0; 
     }
 }
