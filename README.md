@@ -1,4 +1,4 @@
-# scopus-search-api-php
+# Scopus API PHP
 Very unofficial Scopus Search API for PHP
 
 ## Usage:
