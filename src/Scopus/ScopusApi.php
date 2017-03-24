@@ -17,7 +17,7 @@ class ScopusApi
     const ABSTRACT_URI = 'https://api.elsevier.com/content/abstract/scopus_id/';
     const AUTHOR_URI = 'https://api.elsevier.com/content/author/author_id/';
     const AFFILIATION_URI = 'https://api.elsevier.com/content/affiliation/affiliation_id/';
-    const TIMEOUT = 20.0;
+    const TIMEOUT = 30.0;
     
     protected $apiKey;
     
