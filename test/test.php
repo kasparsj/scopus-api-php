@@ -31,9 +31,7 @@ function main() {
     $apiKey = "114ff0c1b77a0cc62e05efdedefd1e6f";
     $api = new ScopusApi($apiKey);
     $results = $api
-        ->query([
-            'af-id' => '60071066'
-        ])
+        ->query("af-id(60071066)")
         ->start(0)
         ->count(25)
         ->viewComplete()
