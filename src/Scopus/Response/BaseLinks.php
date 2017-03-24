@@ -11,7 +11,7 @@ abstract class BaseLinks
     {
         $this->links = [];
         foreach ($links as $link) {
-            $this->links[$link['@ref']] = $links['@href'];
+            $this->links[$link['@ref']] = $link['@href'];
         }
     }
 
