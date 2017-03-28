@@ -40,3 +40,7 @@ foreach ($results->getEntries() as $entry) {
     }
 }
 ```
+
+## API Docs
+
+https://kasparsj.github.io/scopus-api-php/
