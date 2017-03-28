@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>File Scopus/Exception/XmlException.php</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li>
+					<a href="namespace-Scopus.html">
+						Scopus<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Scopus.Exception.html">
+						Exception					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Scopus.Response.html">
+						Response					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Scopus.Util.html">
+						Util					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Scopus.Response.AbstractAuthor.html">Scopus\Response\AbstractAuthor</a></li>
+				<li><a href="class-Scopus.Response.AbstractCoredata.html">Scopus\Response\AbstractCoredata</a></li>
+				<li><a href="class-Scopus.Response.AbstractItem.html">Scopus\Response\AbstractItem</a></li>
+				<li><a href="class-Scopus.Response.Abstracts.html">Scopus\Response\Abstracts</a></li>
+				<li><a href="class-Scopus.Response.Affiliation.html">Scopus\Response\Affiliation</a></li>
+				<li><a href="class-Scopus.Response.Author.html">Scopus\Response\Author</a></li>
+				<li><a href="class-Scopus.Response.AuthorGroup.html">Scopus\Response\AuthorGroup</a></li>
+				<li><a href="class-Scopus.Response.AuthorName.html">Scopus\Response\AuthorName</a></li>
+				<li><a href="class-Scopus.Response.AuthorProfile.html">Scopus\Response\AuthorProfile</a></li>
+				<li><a href="class-Scopus.Response.BaseLinks.html">Scopus\Response\BaseLinks</a></li>
+				<li><a href="class-Scopus.Response.Bibrecord.html">Scopus\Response\Bibrecord</a></li>
+				<li><a href="class-Scopus.Response.BibrecordHead.html">Scopus\Response\BibrecordHead</a></li>
+				<li><a href="class-Scopus.Response.Correspondence.html">Scopus\Response\Correspondence</a></li>
+				<li><a href="class-Scopus.Response.CorrespondencePerson.html">Scopus\Response\CorrespondencePerson</a></li>
+				<li><a href="class-Scopus.Response.Entry.html">Scopus\Response\Entry</a></li>
+				<li><a href="class-Scopus.Response.EntryAuthor.html">Scopus\Response\EntryAuthor</a></li>
+				<li><a href="class-Scopus.Response.EntryLinks.html">Scopus\Response\EntryLinks</a></li>
+				<li><a href="class-Scopus.Response.SearchLinks.html">Scopus\Response\SearchLinks</a></li>
+				<li><a href="class-Scopus.Response.SearchResults.html">Scopus\Response\SearchResults</a></li>
+				<li><a href="class-Scopus.Response.Source.html">Scopus\Response\Source</a></li>
+				<li><a href="class-Scopus.ScopusApi.html">Scopus\ScopusApi</a></li>
+				<li><a href="class-Scopus.SearchQuery.html">Scopus\SearchQuery</a></li>
+				<li><a href="class-Scopus.Util.XmlUtil.html">Scopus\Util\XmlUtil</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Scopus.Response.IAbstract.html">Scopus\Response\IAbstract</a></li>
+				<li><a href="class-Scopus.Response.IAuthor.html">Scopus\Response\IAuthor</a></li>
+				<li><a href="class-Scopus.Response.IAuthorName.html">Scopus\Response\IAuthorName</a></li>
+			</ul>
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-Scopus.Exception.JsonException.html">Scopus\Exception\JsonException</a></li>
+				<li><a href="class-Scopus.Exception.XmlException.html">Scopus\Exception\XmlException</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+<span>Namespace</span>			</li>
+			<li>
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a href="#1"> 1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a href="#2"> 2: </a>
+</span><span id="3" class="l"><a href="#3"> 3: </a><span class="php-keyword1">namespace</span> Scopus\Exception;
+</span><span id="4" class="l"><a href="#4"> 4: </a>
+</span><span id="5" class="l"><a href="#5"> 5: </a><span class="php-keyword1">use</span> Exception;
+</span><span id="6" class="l"><a href="#6"> 6: </a>
+</span><span id="7" class="l"><a href="#7"> 7: </a><span class="php-keyword1">class</span> XmlException <span class="php-keyword1">extends</span> Exception 
+</span><span id="8" class="l"><a href="#8"> 8: </a>{
+</span><span id="9" class="l"><a href="#9"> 9: </a>
+</span><span id="10" class="l"><a href="#10">10: </a>}</span></code></pre>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js?cd021bc814832c24a7cec5319ea03335bfba1caf"></script>
+<script src="elementlist.js?b70e5d26700b94289804133a1702a0ee4b5fa705"></script>
+</body>
+</html>
