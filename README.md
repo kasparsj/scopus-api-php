@@ -2,6 +2,12 @@
 
 PHP SDK for [Scopus APIs](https://dev.elsevier.com/scopus.html)
 
+Currently supported APIs:
+- Scopus Search API
+- Abstract Retrieval API
+- Author Retrieval API
+- Affiliation Retrieval API
+
 ## Installation
 
 `composer require kasparsj/scopus-search-api`
