@@ -17,6 +17,7 @@ Currently supported APIs:
 ```php
 use Scopus\ScopusApi;
 
+// replace with your API key
 $apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
 $api = new ScopusApi($apiKey);
 $results = $api
