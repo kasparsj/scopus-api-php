@@ -1,5 +1,5 @@
-# Scopus API PHP
-Very unofficial Scopus Search API for PHP
+# Scopus API for PHP (Unofficial)
+Scopus API for PHP
 
 ## Usage:
 
