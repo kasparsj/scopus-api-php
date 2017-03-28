@@ -1,6 +1,6 @@
 {
   "name": "kasparsj/scopus-search-api",
-  "description": "Scopus search API",
+  "description": "Scopus API for PHP (Unofficial)",
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
