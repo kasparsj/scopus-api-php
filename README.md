@@ -1,6 +1,6 @@
 # Scopus API for PHP (Unofficial)
 
-PHP SDK for (Scopus APIs)[https://dev.elsevier.com/scopus.html]
+PHP SDK for [Scopus APIs](https://dev.elsevier.com/scopus.html)
 
 ## Installation
 
