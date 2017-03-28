@@ -14,7 +14,7 @@ Currently supported APIs:
 
 ## Usage:
 
-```
+```php
 $apiKey = "11111111111111111111111111111111";
 $api = new Scopus\ScopusApi($apiKey);
 $results = $api
