@@ -8,7 +8,9 @@ error_reporting(E_ALL);
 
 require './vendor/autoload.php';
 
-$apiKey = "114ff0c1b77a0cc62e05efdedefd1e6f";
+// replace with your API key
+$apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
+
 $api = new ScopusApi($apiKey);
 $results = $api
     ->query("af-id(60071066)")
