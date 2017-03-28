@@ -1,5 +1,10 @@
 # Scopus API for PHP (Unofficial)
-Scopus API for PHP
+
+PHP SDK for (Scopus APIs)[https://dev.elsevier.com/scopus.html]
+
+## Installation
+
+`composer require kasparsj/scopus-search-api`
 
 ## Usage:
 
