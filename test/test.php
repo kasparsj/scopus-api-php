@@ -12,6 +12,8 @@ require './vendor/autoload.php';
 $apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
 
 $api = new ScopusApi($apiKey);
+
+// Scopus Search API
 $results = $api
     ->query("af-id(60071066)")
     ->start(0)
@@ -23,6 +25,8 @@ var_dump($results);
 
 foreach ($results->getEntries() as $entry) {
     $abstractUrl = $entry->getLinks()->getSelf();
+    
+    // Abstract Retrieval API
     $abstract = $api->retrieve($abstractUrl);
     
     var_dump($abstract);
@@ -30,6 +34,8 @@ foreach ($results->getEntries() as $entry) {
     $authors = $entry->getAuthors();
     foreach ($authors as $author) {
         $authorUrl = $author->getUrl();
+        
+        // Author Retrieval API
         $author = $api->retrieve($authorUrl);
         
         var_dump($author);
