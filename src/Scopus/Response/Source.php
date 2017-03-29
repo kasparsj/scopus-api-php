@@ -14,7 +14,8 @@ class Source
     
     public function getTitle()
     {
-        return isset($this->data['sourcetitle']) ? $this->data['sourcetitle'] : null;
+        $sourcetitle = isset($this->data['sourcetitle']) ? $this->data['sourcetitle'] : null;
+        return is_array($sourcetitle) ? $sourcetitle['$'] : $sourcetitle;
     }
     
     public function getTitleAbbrev()
