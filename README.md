@@ -10,7 +10,9 @@ Currently supported APIs:
 
 ## Installation
 
-`composer require kasparsj/scopus-search-api`
+`composer require kasparsj/scopus-search-api` (Original project)
+
+Overwrite this project to the original project if you want to use my updates
 
 ## Usage:
 
@@ -54,3 +56,9 @@ foreach ($results->getEntries() as $entry) {
 ## API Docs
 
 https://kasparsj.github.io/scopus-api-php/
+
+## My contribution
+* Added Search Author API
+* Added Citation Overview API
+* Created a support function to retrieve Document of specific Author easly
+* Updated classes
