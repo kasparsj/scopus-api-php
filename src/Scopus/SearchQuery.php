@@ -6,10 +6,8 @@ class SearchQuery
 {
     const VIEW_STANDARD = 'STANDARD';
     const VIEW_COMPLETE = 'COMPLETE';
-    
+
     protected $searchApi;
-    
-    protected $apiKey;
 
     protected $start;
 
@@ -18,17 +16,19 @@ class SearchQuery
     protected $query;
 
     protected $view;
-    
+
+    protected $cursor;
+
     public function __construct(ScopusApi $searchApi, $query)
     {
         $this->searchApi = $searchApi;
-        $this->apiKey = $searchApi->getApiKey();
         $this->query = $query;
         $this->start = 0;
         $this->count = 25;
         $this->view = self::VIEW_STANDARD;
+        $this->cursor = null;
     }
-    
+
     public function getStart()
     {
         return $this->start;
@@ -62,6 +62,23 @@ class SearchQuery
         return $this;
     }
 
+    public function withCursor()
+    {
+        $this->cursor = "*";
+        return $this;
+    }
+
+    public function setCursor($cursor)
+    {
+        $this->cursor = $cursor;
+        return $this;
+    }
+
+    public function getCursor()
+    {
+        return $this->cursor;
+    }
+
     public function getView()
     {
         return $this->view;
@@ -72,7 +89,7 @@ class SearchQuery
         $this->view = self::VIEW_STANDARD;
         return $this;
     }
-    
+
     public function viewComplete()
     {
         $this->view = self::VIEW_COMPLETE;
@@ -86,7 +103,7 @@ class SearchQuery
     {
         return $this->searchApi->search($this->toArray());
     }
-    
+
     public function toArray()
     {
         return [
@@ -94,7 +111,7 @@ class SearchQuery
             'start' => $this->start,
             'count' => $this->count,
             'view' => $this->view,
-            'apiKey' => $this->apiKey,
+            'cursor' => $this->cursor
         ];
     }
 }

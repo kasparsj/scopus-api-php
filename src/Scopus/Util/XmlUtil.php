@@ -9,7 +9,7 @@ class XmlUtil
     public static function toArray(SimpleXMLElement $xml, array $options = [])
     {
         $defaults = array(
-            'namespaceSeparator' => ':',//you may want this to be something other than a colon
+            'namespaceSeparator' => ':', //you may want this to be something other than a colon
             'attributePrefix' => '@',   //to distinguish between attributes and nodes with the same name
             'alwaysArray' => array(),   //array of xml tag names which should always become arrays
             'autoArray' => true,        //only create arrays for tags which appear more than once
@@ -32,7 +32,7 @@ class XmlUtil
                 $attributeKey = $options['attributePrefix']
                     . ($prefix ? $prefix . $options['namespaceSeparator'] : '')
                     . $attributeName;
-                $attributesArray[$attributeKey] = (string)$attribute;
+                $attributesArray[$attributeKey] = (string) $attribute;
             }
         }
 
@@ -55,7 +55,7 @@ class XmlUtil
                     //test if tags of this type should always be arrays, no matter the element count
                     $tagsArray[$childTagName] =
                         in_array($childTagName, $options['alwaysArray']) || !$options['autoArray']
-                            ? array($childProperties) : $childProperties;
+                        ? array($childProperties) : $childProperties;
                 } elseif (
                     is_array($tagsArray[$childTagName]) && array_keys($tagsArray[$childTagName])
                     === range(0, count($tagsArray[$childTagName]) - 1)
@@ -71,7 +71,7 @@ class XmlUtil
 
         //get text content of node
         $textContentArray = array();
-        $plainText = trim((string)$xml);
+        $plainText = trim((string) $xml);
         if ($plainText !== '') $textContentArray[$options['textContent']] = $plainText;
 
         //stick it all together
