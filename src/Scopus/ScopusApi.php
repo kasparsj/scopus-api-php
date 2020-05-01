@@ -170,7 +170,7 @@ class ScopusApi
      * @param startYear Start year range
      * @param endYear End of range year
      * @param array $options -> https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple
-     * @return AbstractCitations Return all quotes over the years. Call the getCompactInfo () method to retrieve the citations  
+     * @return AbstractCitations Call the getCompactInfo() method to retrieve the citations count over the years
      */
     public function overviewCitation($documentId, String $startYear = null, String $endYear = null, array $options = [])
     {

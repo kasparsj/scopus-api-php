@@ -7,6 +7,12 @@ Currently supported APIs:
 - Abstract Retrieval API
 - Author Retrieval API
 - Affiliation Retrieval API
+    - Search Author API
+    - Citation Overview API
+
+Original Project: [https://github.com/kasparsj/scopus-api-php](https://github.com/kasparsj/scopus-api-php)
+
+Custom Project: [https://github.com/AntoninoBonanno/scopus-api-php](https://github.com/AntoninoBonanno/scopus-api-php)
 
 ## Installation
 
@@ -62,3 +68,5 @@ https://kasparsj.github.io/scopus-api-php/
 * Added Citation Overview API
 * Created a support function to retrieve Document of specific Author easly
 * Updated classes
+
+[Bonanno Antonino](https://github.com/AntoninoBonanno)
