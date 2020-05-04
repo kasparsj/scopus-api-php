@@ -7,6 +7,9 @@ class AbstractCitations
     /** @var array */
     protected $data;
 
+    /** @var AbstractCoredata[] */
+    protected $identifiers;
+
     /** @var CiteInfo[] */
     protected $citeInfos;
 
@@ -23,27 +26,14 @@ class AbstractCitations
         return $this->data['h-index'];
     }
 
-    private function getParentIdentifier()
+    public function getIdentifiers()
     {
-        return $this->data['identifier-legend']['identifier'][0] ?? null;
-    }
-
-    public function getIdentifier()
-    {
-        $parent = $this->getParentIdentifier();
-        return $parent ? $parent["dc:identifier"] : null;
-    }
-
-    public function getDoi()
-    {
-        $parent = $this->getParentIdentifier();
-        return $parent ? $parent["prism:doi"] : null;
-    }
-
-    public function getScopusId()
-    {
-        $parent = $this->getParentIdentifier();
-        return $parent ? $parent["scopus_id"] : null;
+        if (isset($this->data['identifier-legend']['identifier'])) {
+            return $this->identifiers ?: $this->identifiers = array_map(function ($identifier) {
+                return new AbstractCoredata($identifier);
+            }, $this->data['identifier-legend']['identifier']);
+        }
+        return null;
     }
 
     public function getCiteInfos()
@@ -58,10 +48,41 @@ class AbstractCitations
 
     public function getCiteCountHeader()
     {
-        return isset($this->data['citeColumnTotalXML']['citeCountHeader']) ? new CiteCountHeader($this->data['citeColumnTotalXML']['citeCountHeader']) : null;
+        if (isset($this->data['citeColumnTotalXML']['citeCountHeader']))
+            return $this->citeCountHeader ?? $this->citeCountHeader = new CiteCountHeader($this->data['citeColumnTotalXML']['citeCountHeader']);
+
+        return null;
     }
 
+    /**
+     * Extracts the citations per year of each document
+     * @return array [document_scopus_id => [year => value ]]
+     */
     public function getCompactInfo()
+    {
+        $header = $this->getCiteCountHeader();
+        if (!$header) return null;
+
+        $clmHeader = $header->getColumnHeading();
+        $citeInfos = $this->getCiteInfos();
+
+        if (!$clmHeader || !$citeInfos) return null;
+        if (!is_array($clmHeader)) $clmHeader = [$clmHeader];
+
+        $compactData = [];
+        foreach ($citeInfos as $citeInfo) {
+            foreach ($clmHeader as $index => $value) {
+                $compactData[$citeInfo->getScopusId()][$value["$"]] = $citeInfo->getColumnCount()[$index]["$"];
+            }
+        }
+        return $compactData;
+    }
+
+    /**
+     * Extracts total citations per year
+     * @return array [year => value ]
+     */
+    public function getTotalCompactInfo()
     {
         $header = $this->getCiteCountHeader();
         if (!$header) return null;
@@ -70,15 +91,14 @@ class AbstractCitations
         $clmCount = $header->getColumnTotal();
 
         if (!$clmHeader || !$clmCount) return null;
+        if (!is_array($clmHeader)) $clmHeader = [$clmHeader];
 
         $compactData = [];
         $compactData["citation_previous_dates"] = $header->getPrevColumnTotal();
         $compactData["citation_subsequent_dates"] = $header->getLaterColumnTotal();
 
-        if (is_array($clmHeader) || is_object($clmHeader)) {
-            foreach ($clmHeader as $index => $value)
-                $compactData[$value["$"]] = $clmCount[$index]["$"];
-        } else $compactData[$clmHeader] = $clmCount;
+        foreach ($clmHeader as $index => $value)
+            $compactData[$value["$"]] = $clmCount[$index]["$"];
 
         return $compactData;
     }

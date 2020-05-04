@@ -133,10 +133,10 @@ class ScopusApi
     /**
      * I look for authors by name, surname or affiliation
      *  with https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl
-     * 
-     * @param String $lastName last name of author to look for 
-     * @param String $firstName first name of author to look for 
-     * @param String $affiliation affiliation of author to look for 
+     *
+     * @param String $lastName last name of author to look for
+     * @param String $firstName first name of author to look for
+     * @param String $affiliation affiliation of author to look for
      * @param array $options -> https://dev.elsevier.com/tips/AuthorSearchTips.htm
      * @return SearchResults use getEntries() method for get the array of author format -> https://dev.elsevier.com/guides/AuthorSearchViews.htm
      */
@@ -166,19 +166,28 @@ class ScopusApi
      *
      * I can set a range of years to show: startYear - endYear
      *
-     * @param String $documentId Scopus_id of the document
+     * @param array/String $documentId Scopus_id of the document or array of the document Scopus_id
      * @param startYear Start year range
      * @param endYear End of range year
      * @param array $options -> https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple
-     * @return AbstractCitations Call the getCompactInfo() method to retrieve the citations count over the years
+     * @return AbstractCitations[] Return all quotes over the years grouped by 25 documents.
+     * Call the getCompactInfo() method, in the single instance, to retrieve the document citations in details (max 25 for instance),
+     * Call the getTotalCompactInfo() method, in the single instance, to retrieve all documents citations  (max 25 for instance)
      */
     public function overviewCitation($documentId, String $startYear = null, String $endYear = null, array $options = [])
     {
-        $options["scopus_id"] = $documentId;
         if ($startYear && $endYear) $options["date"] = $startYear . "-" . $endYear;
-        return $this->retrieve(self::CITATION_OVERVIEW_URI, [
-            'query' => $options,
-        ]);
+        if (!is_array($documentId)) $documentId = [$documentId];
+
+        $responses = [];
+        $pieces = array_chunk($documentId, 25);
+        foreach ($pieces as $piece) {
+            $options["scopus_id"] = "(" . implode(",", $piece) . ")";
+            array_push($responses, $this->retrieve(self::CITATION_OVERVIEW_URI, [
+                'query' => $options,
+            ]));
+        }
+        return $responses;
     }
 
     /**
@@ -220,7 +229,8 @@ class ScopusApi
                 return [
                     $scopusIds[0] => $this->retrieveAbstract($scopusIds[0], $options),
                 ];
-            } catch (Exception $e) { }
+            } catch (Exception $e) {
+            }
         }
     }
 
@@ -265,7 +275,8 @@ class ScopusApi
                 return [
                     $authorIds[0] => $this->retrieveAuthor($authorIds[0], $options),
                 ];
-            } catch (Exception $e) { }
+            } catch (Exception $e) {
+            }
         }
     }
 
