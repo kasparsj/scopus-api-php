@@ -69,11 +69,16 @@ class AbstractCitations
         $clmHeader = $header->getColumnHeading();
         $clmCount = $header->getColumnTotal();
 
+        if (!$clmHeader || !$clmCount) return null;
+
         $compactData = [];
         $compactData["citation_previous_dates"] = $header->getPrevColumnTotal();
         $compactData["citation_subsequent_dates"] = $header->getLaterColumnTotal();
-        foreach ($clmHeader as $index => $value)
-            $compactData[$value["$"]] = $clmCount[$index]["$"];
+
+        if (is_array($clmHeader) || is_object($clmHeader)) {
+            foreach ($clmHeader as $index => $value)
+                $compactData[$value["$"]] = $clmCount[$index]["$"];
+        } else $compactData[$clmHeader] = $clmCount;
 
         return $compactData;
     }
