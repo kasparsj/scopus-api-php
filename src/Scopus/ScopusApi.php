@@ -144,14 +144,14 @@ class ScopusApi
     {
         if (empty($lastName) && empty($firstName) && empty($affiliation)) return null;
 
-        $query = (!empty($lastName)) ? 'authlast(' . $lastName . ')' : "";
+        $query = (!empty($lastName)) ? 'authlast("' . $lastName . '")' : "";
         if (!empty($firstName)) {
             $query .= (empty($query)) ? "" : " and ";
-            $query .= 'authfirst(' . $firstName . ')';
+            $query .= 'authfirst("' . $firstName . '")';
         }
         if (!empty($affiliation)) {
             $query .= (empty($query)) ? "" : " and ";
-            $query .= 'affil(' . $affiliation . ')';
+            $query .= 'affil("' . $affiliation . '")';
         }
 
         $query = array_merge($options, $this->query($query)->toArray());
