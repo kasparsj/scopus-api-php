@@ -24,13 +24,11 @@ class AuthorProfile
         $this->data = $data;
     }
 
-    //to try
     public function getDataCreated()
     {
         if (isset($this->data['date-created'])) {
             $dateCreat = $this->data['date-created'];
-            $date = new DateTime($dateCreat['@year'] . '-' . $dateCreat['@month'] . '-' . $dateCreat['@day']);
-            return $date->format('d/m/Y');
+            return $dateCreat['@year'] . '-' . $dateCreat['@month'] . '-' . $dateCreat['@day'];
         }
         return null;
     }
@@ -50,7 +48,6 @@ class AuthorProfile
 
     //getClassificationgroup 
 
-    //to try
     public function getPublicationRange()
     {
         if (isset($this->data['publication-range'])) {

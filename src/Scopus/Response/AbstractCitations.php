@@ -67,7 +67,7 @@ class AbstractCitations
         $citeInfos = $this->getCiteInfos();
 
         if (!$clmHeader || !$citeInfos) return null;
-        if (!is_array($clmHeader)) $clmHeader = [$clmHeader];
+        if (!is_array($clmHeader)) return [$citeInfos[0]->getScopusId() => [$clmHeader => $citeInfos[0]->getColumnCount()]];
 
         $compactData = [];
         foreach ($citeInfos as $citeInfo) {
