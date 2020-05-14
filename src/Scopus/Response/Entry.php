@@ -148,4 +148,10 @@ class Entry extends AbstractCoredata implements IAbstract
     {
         return isset($this->data['error']);
     }
+
+    public function isOpenAccess()
+    {
+        if (isset($this->data["openaccessFlag"])) return $this->data["openaccessFlag"];
+        return (isset($this->data["openaccess"]) && $this->data["openaccess"] == "1") ? true : false;
+    }
 }
