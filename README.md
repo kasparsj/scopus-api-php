@@ -7,10 +7,18 @@ Currently supported APIs:
 - Abstract Retrieval API
 - Author Retrieval API
 - Affiliation Retrieval API
+    - Search Author API
+    - Citation Overview API
+
+Original Project: [https://github.com/kasparsj/scopus-api-php](https://github.com/kasparsj/scopus-api-php)
+
+Custom Project: [https://github.com/AntoninoBonanno/scopus-api-php](https://github.com/AntoninoBonanno/scopus-api-php)
 
 ## Installation
 
-`composer require kasparsj/scopus-search-api`
+`composer require kasparsj/scopus-search-api` (Original project)
+
+Overwrite this project to the original project if you want to use my updates
 
 ## Usage:
 
@@ -54,3 +62,11 @@ foreach ($results->getEntries() as $entry) {
 ## API Docs
 
 https://kasparsj.github.io/scopus-api-php/
+
+## My contribution
+* Added Search Author API
+* Added Citation Overview API
+* Created a support function to retrieve Document of specific Author easly
+* Updated classes
+
+[Bonanno Antonino](https://github.com/AntoninoBonanno)

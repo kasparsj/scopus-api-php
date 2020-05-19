@@ -9,6 +9,7 @@ use Scopus\Exception\XmlException;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
 use Scopus\Response\SearchResults;
+use Scopus\Response\AbstractCitations;
 use Scopus\Util\XmlUtil;
 
 class ScopusApi
@@ -17,10 +18,12 @@ class ScopusApi
     const ABSTRACT_URI = 'https://api.elsevier.com/content/abstract/scopus_id/';
     const AUTHOR_URI = 'https://api.elsevier.com/content/author/author_id/';
     const AFFILIATION_URI = 'https://api.elsevier.com/content/affiliation/affiliation_id/';
-    const TIMEOUT = 30.0;
-    
+    const SEARCH_AUTHOR_URI = 'https://api.elsevier.com/content/search/author';
+    const CITATION_OVERVIEW_URI = 'https://api.elsevier.com/content/abstract/citations';
+    const TIMEOUT = 40.0;
+
     protected $apiKey;
-    
+
     /**
      * SearchApi constructor.
      * @param string $apiKey
@@ -33,6 +36,7 @@ class ScopusApi
             'timeout' => $timeout,
             'headers' => [
                 'Accept' => 'application/json',
+                'X-ELS-APIKey' => $this->apiKey
             ],
         ]);
     }
@@ -56,7 +60,7 @@ class ScopusApi
     /**
      * @return SearchQuery
      */
-    public function query($query)
+    private function query($query)
     {
         return new SearchQuery($this, $query);
     }
@@ -67,14 +71,9 @@ class ScopusApi
      * @return array|Abstracts|Author|SearchResults
      * @throws Exception
      */
-    public function retrieve($uri, array $options = [])
+    private function retrieve($uri, array $options = [])
     {
-        if (!isset($options['query']['apiKey']) && $this->apiKey) {
-            $options['query']['apiKey'] = $this->apiKey;
-        }
-        
         $response = $this->client->get($uri, $options);
-        
         if ($response->getStatusCode() === 200) {
             $body = $response->getBody();
             $contentType = $response->getHeader('Content-Type');
@@ -83,7 +82,7 @@ class ScopusApi
                 if ($xml === false) {
                     $error = libxml_get_last_error();
                     throw new XmlException(sprintf('Xml response could not be parsed "%s" (%d) for %s', $error->message, $error->code, $uri), $error->code);
-                } 
+                }
                 $body = json_encode(XmlUtil::toArray($xml));
             }
             $json = json_decode($body, true);
@@ -92,6 +91,7 @@ class ScopusApi
                 $error = json_last_error();
                 throw new JsonException(sprintf('Json response could not be decoded "%s" (%d) for "%s"', $message, $error, $uri), $error);
             }
+
             $type = key($json);
             switch ($type) {
                 case 'search-results':
@@ -99,17 +99,19 @@ class ScopusApi
                 case 'abstracts-retrieval-response':
                     return new Abstracts($json['abstracts-retrieval-response']);
                 case 'abstracts-retrieval-multidoc-response':
-                    return array_map(function($data) {
+                    return array_map(function ($data) {
                         return new Abstracts($data);
                     }, $json['abstracts-retrieval-multidoc-response']['abstracts-retrieval-response']);
                 case 'author-retrieval-response':
                     return new Author($json['author-retrieval-response'][0]);
                 case 'author-retrieval-response-list':
-                    return array_map(function($data) {
+                    return array_map(function ($data) {
                         if ($data['@status'] === 'found') {
                             return new Author($data);
                         }
                     }, $json['author-retrieval-response-list']['author-retrieval-response']);
+                case 'abstract-citations-response':
+                    return new AbstractCitations($json['abstract-citations-response']);
                 default:
                     throw new Exception(sprintf('Unsupported response type: "%s" for "%s"', $type, $uri));
             }
@@ -117,6 +119,7 @@ class ScopusApi
     }
 
     /**
+     * https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl
      * @param array $query
      * @return SearchResults
      */
@@ -125,6 +128,66 @@ class ScopusApi
         return $this->retrieve(self::SEARCH_URI, [
             'query' => $query,
         ]);
+    }
+
+    /**
+     * I look for authors by name, surname or affiliation
+     *  with https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl
+     *
+     * @param String $lastName last name of author to look for
+     * @param String $firstName first name of author to look for
+     * @param String $affiliation affiliation of author to look for
+     * @param array $options -> https://dev.elsevier.com/tips/AuthorSearchTips.htm
+     * @return SearchResults use getEntries() method for get the array of author format -> https://dev.elsevier.com/guides/AuthorSearchViews.htm
+     */
+    public function searchAuthors(String $lastName = null, String $firstName = null, String $affiliation = null, array $options = [])
+    {
+        if (empty($lastName) && empty($firstName) && empty($affiliation)) return null;
+
+        $query = (!empty($lastName)) ? 'authlast("' . $lastName . '")' : "";
+        if (!empty($firstName)) {
+            $query .= (empty($query)) ? "" : " and ";
+            $query .= 'authfirst("' . $firstName . '")';
+        }
+        if (!empty($affiliation)) {
+            $query .= (empty($query)) ? "" : " and ";
+            $query .= 'affil("' . $affiliation . '")';
+        }
+
+        $query = array_merge($options, $this->query($query)->toArray());
+        return $this->retrieve(self::SEARCH_AUTHOR_URI, [
+            'query' => $query,
+        ]);
+    }
+
+    /**
+     * I recover the citations on a specific document
+     * https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl
+     *
+     * I can set a range of years to show: startYear - endYear
+     *
+     * @param array/String $documentId Scopus_id of the document or array of the document Scopus_id
+     * @param startYear Start year range
+     * @param endYear End of range year
+     * @param array $options -> https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple
+     * @return AbstractCitations[] Return all quotes over the years grouped by 25 documents.
+     * Call the getCompactInfo() method, in the single instance, to retrieve the document citations in details (max 25 for instance),
+     * Call the getTotalCompactInfo() method, in the single instance, to retrieve all documents citations  (max 25 for instance)
+     */
+    public function overviewCitation($documentId, String $startYear = null, String $endYear = null, array $options = [])
+    {
+        if ($startYear && $endYear) $options["date"] = $startYear . "-" . $endYear;
+        if (!is_array($documentId)) $documentId = [$documentId];
+
+        $responses = [];
+        $pieces = array_chunk($documentId, 25);
+        foreach ($pieces as $piece) {
+            $options["scopus_id"] = "(" . implode(",", $piece) . ")";
+            array_push($responses, $this->retrieve(self::CITATION_OVERVIEW_URI, [
+                'query' => $options,
+            ]));
+        }
+        return $responses;
     }
 
     /**
@@ -141,7 +204,9 @@ class ScopusApi
         if (count(explode(',', $scopusId)) > 25) {
             throw new Exception("The maximum number of 25 abstract id's exceeded!");
         }
-        return $this->retrieve(self::ABSTRACT_URI . $scopusId, $options);
+        return $this->retrieve(self::ABSTRACT_URI . $scopusId, [
+            'query' => $options
+        ]);
     }
 
     /**
@@ -159,23 +224,22 @@ class ScopusApi
                 $abstracts = array_merge($abstracts, array_combine($chunk, $this->retrieveAbstract($chunk, $options)));
             }
             return $abstracts;
-        }
-        else {
+        } else {
             try {
                 return [
                     $scopusIds[0] => $this->retrieveAbstract($scopusIds[0], $options),
                 ];
-            }
-            catch (Exception $e) {
-                
+            } catch (Exception $e) {
             }
         }
     }
 
     /**
-     * @param $authorId
-     * @param array $options
-     * @return Author|Author[]
+     * Retrieve an author with
+     * https://dev.elsevier.com/documentation/AuthorRetrievalAPI.wadl
+     * @param $authorId author id
+     * @param array $options -> ['view'=>'ENHANCED'] https://dev.elsevier.com/guides/AuthorRetrievalViews.htm
+     * @return Author|Author[] an Author returns
      * @throws Exception
      */
     public function retrieveAuthor($authorId, array $options = [])
@@ -186,7 +250,9 @@ class ScopusApi
         if (count(explode(',', $authorId)) > 25) {
             throw new Exception("The maximum number of 25 author id's exceeded!");
         }
-        return $this->retrieve(self::AUTHOR_URI . $authorId, $options);
+        return $this->retrieve(self::AUTHOR_URI . $authorId,  [
+            'query' => $options
+        ]);
     }
 
     /**
@@ -204,21 +270,51 @@ class ScopusApi
                 $authors = array_merge($authors, array_combine($chunk, $this->retrieveAuthor($chunk, $options)));
             }
             return $authors;
-        }
-        else {
+        } else {
             try {
                 return [
                     $authorIds[0] => $this->retrieveAuthor($authorIds[0], $options),
                 ];
-            }
-            catch (Exception $e) {
-                
+            } catch (Exception $e) {
             }
         }
     }
-    
+
     public function retrieveAffiliation($affiliationId, array $options = [])
     {
         return $this->retrieve(self::AFFILIATION_URI . $affiliationId, $options);
+    }
+
+    /**
+     * I recover the documents of a specific Author with
+     * https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl
+     * cursor next = prendo i successivi 25
+     *
+     * I can set a search range: startYear < AnnoDocumento < endYear
+     *  ! Warning: do not startYear <= Document Year <= endYear
+     * @param String $authorId AUTHOR_ID
+     * @param String $startYear Start year range
+     * @param String $endYear End of range year
+     * @param bool $jrDocument If I only want items of type j or r
+     * @return Entries[] Return all articles by the selected author https://dev.elsevier.com/guides/ScopusSearchViews.htm
+     */
+    public function retrieveDocumentsAuthor(String $authorId, String $startYear = null, String $endYear = null, bool $jrDocument = false)
+    {
+        //Query parameters -> https://dev.elsevier.com/tips/ScopusSearchTips.htm        
+        $query = "au-id(" . $authorId . ")";
+        if ($startYear != null && $endYear != null) $query .= " and PUBYEAR > $startYear AND PUBYEAR < $endYear";
+        if ($jrDocument)  $query .= " and SRCTYPE(r OR j)";
+
+        $searchResults = $this->query($query)->withCursor()->viewComplete()->search();
+        $documents =  $searchResults->getEntries(); //Entries[]
+
+        $numDocument = $searchResults->getTotalResults() - $searchResults->countEntries();
+        while ($numDocument > 0) { //recover all documents
+            $cursor = $searchResults->getNextCursor();
+            $searchResults = $this->query($query)->setCursor($cursor)->viewComplete()->search();
+            $documents = array_merge($documents, $searchResults->getEntries());
+            $numDocument -= $searchResults->countEntries();
+        }
+        return $documents;
     }
 }

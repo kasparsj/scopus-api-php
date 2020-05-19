@@ -3,16 +3,23 @@
   "description": "Scopus API for PHP (Unofficial)",
   "minimum-stability": "dev",
   "license": "MIT",
+  "version": "1.1",
   "authors": [
     {
       "name": "Kaspars Jaudzems",
       "email": "kasparsj@gmail.com"
+    },
+    {
+      "name": "Antonino Bonanno",
+      "email": "nino.bonanno96@gmail.com"
     }
   ],
   "require": {
     "guzzlehttp/guzzle": "6.2.1"
   },
   "autoload": {
-    "psr-0": { "Scopus\\": "src/" }
+    "psr-0": {
+      "Scopus\\": "src/"
+    }
   }
 }

@@ -6,7 +6,7 @@ class AbstractAuthor extends AuthorName implements IAuthor
 {
     /** @var array */
     protected $data;
-    
+
     /** @var AuthorName */
     protected $preferredName;
 
@@ -14,17 +14,17 @@ class AbstractAuthor extends AuthorName implements IAuthor
     {
         parent::__construct($data, 'ce');
     }
-    
+
     public function getId()
     {
         return $this->data['@auid'];
     }
-    
+
     public function getSeq()
     {
-        return $this->data['@seq'];   
+        return $this->data['@seq'];
     }
-    
+
     public function getPreferredName()
     {
         return $this->preferredName ?: $this->preferredName = new AuthorName($this->data['preferred-name'], 'ce');
