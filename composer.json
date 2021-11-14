@@ -1,7 +1,7 @@
 {
   "name": "kasparsj/scopus-search-api",
   "description": "Scopus API for PHP (Unofficial)",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "MIT",
   "version": "1.1",
   "authors": [
@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "guzzlehttp/guzzle": "6.2.1"
+    "guzzlehttp/guzzle": ">=6.3.0"
   },
   "autoload": {
     "psr-0": {
