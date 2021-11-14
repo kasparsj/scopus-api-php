@@ -65,5 +65,3 @@ https://kasparsj.github.io/scopus-api-php/
   * Added Citation Overview API
   * Created a support function to retrieve Document of specific Author easly
   * Updated classes
-
-[Bonanno Antonino](https://github.com/AntoninoBonanno)
