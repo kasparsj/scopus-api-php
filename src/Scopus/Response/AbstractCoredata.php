@@ -124,4 +124,9 @@ class AbstractCoredata
     {
         return $this->data['prism:issn'];
     }
+
+    public function hasError()
+    {
+        return isset($this->data['error']) ? $this->data['error'] : false;
+    }
 }

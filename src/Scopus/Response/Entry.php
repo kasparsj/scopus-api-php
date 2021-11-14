@@ -122,7 +122,7 @@ class Entry extends AbstractCoredata implements IAbstract
         } else if ($this->getCoverDisplayDate() != null) {
             $date = date_parse($this->getCoverDisplayDate());
         }
-        return ($date) ? $date['year'] : null;
+        return (isset($date)) ? $date['year'] : null;
     }
 
     //Entry di SEARCH_AUTHOR_URI
