@@ -9,6 +9,7 @@ Currently, supported APIs:
 - Affiliation Retrieval API
     - Search Author API
     - Citation Overview API
+- Abstract Citations Count API
 
 ## Installation
 
@@ -58,6 +59,8 @@ foreach ($results->getEntries() as $entry) {
 https://kasparsj.github.io/scopus-api-php/
 
 ## Changelog
+- 01/05/2022 - v1.3
+  * Added Abstract Citations Count API
 - 14/11/2021 - v1.2
   *  Bug fix
 - 19/05/2020 - v1.1
