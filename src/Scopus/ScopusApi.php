@@ -8,6 +8,7 @@ use Scopus\Exception\JsonException;
 use Scopus\Exception\XmlException;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
+use Scopus\Response\CitationCount;
 use Scopus\Response\SearchResults;
 use Scopus\Response\AbstractCitations;
 use Scopus\Util\XmlUtil;
@@ -20,6 +21,7 @@ class ScopusApi
     const AFFILIATION_URI = 'https://api.elsevier.com/content/affiliation/affiliation_id/';
     const SEARCH_AUTHOR_URI = 'https://api.elsevier.com/content/search/author';
     const CITATION_OVERVIEW_URI = 'https://api.elsevier.com/content/abstract/citations';
+    const CITATION_COUNT_URI = 'https://api.elsevier.com/content/abstract/citation-count';
     const TIMEOUT = 40.0;
 
     protected $apiKey;
@@ -68,7 +70,7 @@ class ScopusApi
     /**
      * @param string $uri
      * @param array $options
-     * @return array|Abstracts|Author|SearchResults
+     * @return array|Abstracts|Author|SearchResults|CitationCount[]
      * @throws Exception
      */
     private function retrieve($uri, array $options = [])
@@ -112,6 +114,12 @@ class ScopusApi
                     }, $json['author-retrieval-response-list']['author-retrieval-response']);
                 case 'abstract-citations-response':
                     return new AbstractCitations($json['abstract-citations-response']);
+                case 'citation-count-response':
+                    $document = $json['citation-count-response']['document'];
+
+                    return array_map(function ($data) {
+                        return new CitationCount($data);
+                    }, isset($document['@status']) ? [$document] : $document);
                 default:
                     throw new Exception(sprintf('Unsupported response type: "%s" for "%s"', $type, $uri));
             }
@@ -188,6 +196,31 @@ class ScopusApi
             ]));
         }
         return $responses;
+    }
+
+    /**
+     * @param string|string[] $scopusId
+     * @param array $options
+     *
+     * @return CitationCount[]
+     *
+     * @throws Exception
+     */
+    public function retrieveCitationCount($scopusId, array $options = [])
+    {
+        if (is_array($scopusId)) {
+            $scopusId = implode(',', $scopusId);
+        }
+
+        if (count(explode(',', $scopusId)) > 25) {
+            throw new Exception("The maximum number of 25 document id's exceeded!");
+        }
+
+        $options['scopus_id'] = $scopusId;
+
+        return $this->retrieve(self::CITATION_COUNT_URI, [
+            'query' => $options
+        ]);
     }
 
     /**
