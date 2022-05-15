@@ -73,7 +73,7 @@ class ScopusApi
      * @return array|Abstracts|Author|SearchResults|CitationCount[]
      * @throws Exception
      */
-    private function retrieve($uri, array $options = [])
+    public function retrieve($uri, array $options = [])
     {
         $response = $this->client->get($uri, $options);
         if ($response->getStatusCode() === 200) {
