@@ -3,14 +3,16 @@
 namespace Scopus;
 
 use Exception;
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Scopus\Exception\JsonException;
 use Scopus\Exception\XmlException;
+use Scopus\Response\AbstractCitations;
 use Scopus\Response\Abstracts;
 use Scopus\Response\Author;
 use Scopus\Response\CitationCount;
+use Scopus\Response\Entry;
 use Scopus\Response\SearchResults;
-use Scopus\Response\AbstractCitations;
 use Scopus\Util\XmlUtil;
 
 class ScopusApi
@@ -22,41 +24,12 @@ class ScopusApi
     const SEARCH_AUTHOR_URI = 'https://api.elsevier.com/content/search/author';
     const CITATION_OVERVIEW_URI = 'https://api.elsevier.com/content/abstract/citations';
     const CITATION_COUNT_URI = 'https://api.elsevier.com/content/abstract/citation-count';
-    const TIMEOUT = 40.0;
 
-    protected $apiKey;
+    private $client;
 
-    /**
-     * SearchApi constructor.
-     * @param string $apiKey
-     * @param float $timeout
-     */
-    public function __construct($apiKey, $timeout = self::TIMEOUT)
+    public function __construct(ClientInterface $httpClient)
     {
-        $this->apiKey = $apiKey;
-        $this->client = new Client([
-            'timeout' => $timeout,
-            'headers' => [
-                'Accept' => 'application/json',
-                'X-ELS-APIKey' => $this->apiKey
-            ],
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
-
-    /**
-     * @param string $apiKey
-     */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
+        $this->client = $httpClient;
     }
 
     /**
@@ -70,12 +43,15 @@ class ScopusApi
     /**
      * @param string $uri
      * @param array $options
-     * @return array|Abstracts|Author|SearchResults|CitationCount[]
-     * @throws Exception
+     *
+     * @return array|Abstracts|Author|SearchResults|AbstractCitations|CitationCount[]
+     *
+     * @throws Exception|GuzzleException
      */
     public function retrieve($uri, array $options = [])
     {
         $response = $this->client->get($uri, $options);
+
         if ($response->getStatusCode() === 200) {
             $body = $response->getBody();
             $contentType = $response->getHeader('Content-Type');
@@ -142,13 +118,15 @@ class ScopusApi
      * I look for authors by name, surname or affiliation
      *  with https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl
      *
-     * @param String $lastName last name of author to look for
-     * @param String $firstName first name of author to look for
-     * @param String $affiliation affiliation of author to look for
+     * @param string|null $lastName last name of author to look for
+     * @param string|null $firstName first name of author to look for
+     * @param string|null $affiliation affiliation of author to look for
+     *
      * @param array $options -> https://dev.elsevier.com/tips/AuthorSearchTips.htm
+     *
      * @return SearchResults use getEntries() method for get the array of author format -> https://dev.elsevier.com/guides/AuthorSearchViews.htm
      */
-    public function searchAuthors(String $lastName = null, String $firstName = null, String $affiliation = null, array $options = [])
+    public function searchAuthors(string $lastName = null, string $firstName = null, string $affiliation = null, array $options = [])
     {
         if (empty($lastName) && empty($firstName) && empty($affiliation)) return null;
 
@@ -175,14 +153,16 @@ class ScopusApi
      * I can set a range of years to show: startYear - endYear
      *
      * @param array/String $documentId Scopus_id of the document or array of the document Scopus_id
-     * @param startYear Start year range
-     * @param endYear End of range year
+     * @param string|null $startYear Start year range
+     * @param string|null $endYear End of range year
      * @param array $options -> https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple
+     *
      * @return AbstractCitations[] Return all quotes over the years grouped by 25 documents.
+     *
      * Call the getCompactInfo() method, in the single instance, to retrieve the document citations in details (max 25 for instance),
      * Call the getTotalCompactInfo() method, in the single instance, to retrieve all documents citations  (max 25 for instance)
      */
-    public function overviewCitation($documentId, String $startYear = null, String $endYear = null, array $options = [])
+    public function overviewCitation($documentId, string $startYear = null, string $endYear = null, array $options = [])
     {
         if ($startYear && $endYear) $options["date"] = $startYear . "-" . $endYear;
         if (!is_array($documentId)) $documentId = [$documentId];
@@ -250,6 +230,7 @@ class ScopusApi
     public function retrieveAbstracts($scopusIds, array $options = [])
     {
         $scopusIds = array_unique($scopusIds);
+
         if (count($scopusIds) > 1) {
             $chunks = array_chunk($scopusIds, 25);
             $abstracts = [];
@@ -263,6 +244,7 @@ class ScopusApi
                     $scopusIds[0] => $this->retrieveAbstract($scopusIds[0], $options),
                 ];
             } catch (Exception $e) {
+                return [];
             }
         }
     }
@@ -309,6 +291,7 @@ class ScopusApi
                     $authorIds[0] => $this->retrieveAuthor($authorIds[0], $options),
                 ];
             } catch (Exception $e) {
+                return [];
             }
         }
     }
@@ -325,13 +308,15 @@ class ScopusApi
      *
      * I can set a search range: startYear < AnnoDocumento < endYear
      *  ! Warning: do not startYear <= Document Year <= endYear
-     * @param String $authorId AUTHOR_ID
-     * @param String $startYear Start year range
-     * @param String $endYear End of range year
+     *
+     * @param string $authorId AUTHOR_ID
+     * @param string|null $startYear Start year range
+     * @param string|null $endYear End of range year
      * @param bool $jrDocument If I only want items of type j or r
-     * @return Entries[] Return all articles by the selected author https://dev.elsevier.com/guides/ScopusSearchViews.htm
+     *
+     * @return Entry[] Return all articles by the selected author https://dev.elsevier.com/guides/ScopusSearchViews.htm
      */
-    public function retrieveDocumentsAuthor(String $authorId, String $startYear = null, String $endYear = null, bool $jrDocument = false)
+    public function retrieveDocumentsAuthor(string $authorId, string $startYear = null, string $endYear = null, bool $jrDocument = false)
     {
         //Query parameters -> https://dev.elsevier.com/tips/ScopusSearchTips.htm        
         $query = "au-id(" . $authorId . ")";

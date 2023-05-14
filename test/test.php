@@ -1,6 +1,6 @@
 <?php
 
-use Scopus\ScopusApi;
+use Scopus\ScopusApiFactory;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -11,7 +11,7 @@ require './vendor/autoload.php';
 // replace with your API key
 $apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
 
-$api = new ScopusApi($apiKey);
+$api = (new ScopusApiFactory($apiKey))->createApiClient();
 
 // Scopus Search API
 $results = $api
