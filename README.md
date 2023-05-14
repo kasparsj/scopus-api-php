@@ -19,10 +19,11 @@ Currently, supported APIs:
 
 ```php
 use Scopus\ScopusApi;
+use Scopus\ScopusApiFactory;
 
 // replace with your API key
 $apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
-$api = new ScopusApi($apiKey);
+$api = (new ScopusApiFactory($apiKey))->createApiClient();
 
 // Scopus Search API
 $results = $api
