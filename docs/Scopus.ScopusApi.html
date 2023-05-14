@@ -1,0 +1,773 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>Class Scopus\ScopusApi |  API</title>
+	<link rel="stylesheet" href="assets/main.css">
+	<script src="assets/main.js" defer></script>
+</head>
+
+<body class="layout">
+	<div class="layout-aside">
+	<div class="menu">
+			<div class="menu-section">
+				<h3>Namespaces</h3>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Scopus.html">Scopus</a>
+	<ul>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Exception.html">Exception</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Response.html">Response</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Util.html">Util</a>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</div>
+
+		<div class="menu-section">
+			<h3>Classes</h3>
+			<ul>
+					<li class="active">
+						<a href="Scopus.ScopusApi.html">
+							ScopusApi
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.ScopusApiFactory.html">
+							ScopusApiFactory
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.SearchQuery.html">
+							SearchQuery
+						</a>
+					</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+	<div class="layout-main">
+		<div class="layout-navbar">
+	<nav class="navbar">
+		<div class="navbar-left">
+			<ul class="navbar-links">
+				<li>
+					<a href="index.html">Overview</a>
+				</li>
+				<li>
+					
+						<a href="namespace-Scopus.html">Namespace</a>
+					
+				</li>
+<li class="active"><a href="Scopus.ScopusApi.html">Class</a></li>				<li>
+					<a href="tree.html">Tree</a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-right">
+	<div class="search" data-elements="assets/elements.js">
+		<input class="search-input" placeholder="Search class, function or namespace" autofocus>
+		<ul class="search-results"></ul>
+	</div>
+		</div>
+	</nav>
+		</div>
+
+		<div class="layout-content">
+		<h1>
+			Class <a href="namespace-Scopus.html">Scopus</a>\<a href="Scopus.ScopusApi.html">ScopusApi</a>
+		</h1>
+
+
+	<table class="classLikeSignatureTable">
+
+
+
+
+	</table>
+
+
+		<div class="classLikeSection">
+			<b>Located at</b> <a href="source-Scopus.ScopusApi.html#18" title="Go to source code">Scopus/ScopusApi.php</a><br>
+		</div>
+
+
+
+		<table class="table" id="methods">
+			<tr>
+				<th class="table-heading sortable" colspan="3" title="Switch between natural and alphabetical order">Methods</th>
+			</tr>
+
+	<tr class="expandable collapsed" data-order="__construct" id="___construct">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#30-33" title="Go to source code">__construct</a>(<span><a href="GuzzleHttp.ClientInterface.html"><span title="GuzzleHttp\ClientInterface">ClientInterface</span></a> <var>$httpClient</var></span>)</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#___construct">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="query" id="_query">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#35-41" title="Go to source code">query</a>(<span><var>$query</var></span>): <a href="Scopus.SearchQuery.html"><span title="Scopus\SearchQuery">SearchQuery</span></a></code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_query">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieve" id="_retrieve">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#43-103" title="Go to source code">retrieve</a>(<span>string <var>$uri</var></span>, <span>array <var>$options</var> = []</span>): array|<a href="Scopus.Response.Abstracts.html"><span title="Scopus\Response\Abstracts">Abstracts</span></a>|<a href="Scopus.Response.Author.html"><span title="Scopus\Response\Author">Author</span></a>|<a href="Scopus.Response.SearchResults.html"><span title="Scopus\Response\SearchResults">SearchResults</span></a>|<a href="Scopus.Response.AbstractCitations.html"><span title="Scopus\Response\AbstractCitations">AbstractCitations</span></a>|<a href="Scopus.Response.CitationCount.html"><span title="Scopus\Response\CitationCount">CitationCount</span></a>[]</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Exception.html"><span>Exception</span></a>|<a href="GuzzleHttp.Exception.GuzzleException.html"><span>GuzzleHttp\Exception\GuzzleException</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieve">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="search" id="_search">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#105-115" title="Go to source code">search</a>(<span>array <var>$query</var></span>): <a href="Scopus.Response.SearchResults.html"><span title="Scopus\Response\SearchResults">SearchResults</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p><a href="https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl">https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl</a></p>
+</div>
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_search">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="searchAuthors" id="_searchAuthors">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#117-147" title="Go to source code">searchAuthors</a>(
+	<span>string|null <var>$lastName</var> = <span class="php-kw">null</span></span>,
+	<span>string|null <var>$firstName</var> = <span class="php-kw">null</span></span>,
+	<span>string|null <var>$affiliation</var> = <span class="php-kw">null</span></span>,
+	<span>array <var>$options</var> = []</span>,
+): <a href="Scopus.Response.SearchResults.html"><span title="Scopus\Response\SearchResults">SearchResults</span></a></code>
+
+
+	<div class="expandable-collapsedView">
+		I look for authors by name, surname or affiliation
+ with https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>I look for authors by name, surname or affiliation
+with <a href="https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl">https://dev.elsevier.com/documentation/AuthorSearchAPI.wadl</a></p>
+</div>
+
+							<h4>Parameters</h4>
+							<table>
+									<tr>
+										<td><var>$lastName</var>&nbsp;&nbsp;</td>
+										<td><p>last name of author to look for</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$firstName</var>&nbsp;&nbsp;</td>
+										<td><p>first name of author to look for</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$affiliation</var>&nbsp;&nbsp;</td>
+										<td><p>affiliation of author to look for</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$options</var>&nbsp;&nbsp;</td>
+										<td><p>-&gt; <a href="https://dev.elsevier.com/tips/AuthorSearchTips.htm">https://dev.elsevier.com/tips/AuthorSearchTips.htm</a></p>
+</td>
+									</tr>
+							</table>
+
+							<h4>Returns</h4>
+							<div><p>use getEntries() method for get the array of author format -&gt; <a href="https://dev.elsevier.com/guides/AuthorSearchViews.htm">https://dev.elsevier.com/guides/AuthorSearchViews.htm</a></p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_searchAuthors">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="overviewCitation" id="_overviewCitation">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#149-179" title="Go to source code">overviewCitation</a>(
+	<span><var>$documentId</var></span>,
+	<span>string|null <var>$startYear</var> = <span class="php-kw">null</span></span>,
+	<span>string|null <var>$endYear</var> = <span class="php-kw">null</span></span>,
+	<span>array <var>$options</var> = []</span>,
+): <a href="Scopus.Response.AbstractCitations.html"><span title="Scopus\Response\AbstractCitations">AbstractCitations</span></a>[]</code>
+
+
+	<div class="expandable-collapsedView">
+		I recover the citations on a specific document
+https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>I recover the citations on a specific document
+<a href="https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl">https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl</a></p>
+<p>I can set a range of years to show: startYear - endYear</p>
+</div>
+
+							<h4>Parameters</h4>
+							<table>
+									<tr>
+										<td><var>$startYear</var>&nbsp;&nbsp;</td>
+										<td><p>Start year range</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$endYear</var>&nbsp;&nbsp;</td>
+										<td><p>End of range year</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$options</var>&nbsp;&nbsp;</td>
+										<td><p>-&gt; <a href="https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple">https://dev.elsevier.com/documentation/AbstractCitationAPI.wadl#simple</a></p>
+</td>
+									</tr>
+							</table>
+
+							<h4>Returns</h4>
+							<div><p>Return all quotes over the years grouped by 25 documents.</p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_overviewCitation">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveCitationCount" id="_retrieveCitationCount">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#181-204" title="Go to source code">retrieveCitationCount</a>(<span>string|string[] <var>$scopusId</var></span>, <span>array <var>$options</var> = []</span>): <a href="Scopus.Response.CitationCount.html"><span title="Scopus\Response\CitationCount">CitationCount</span></a>[]</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Exception.html"><span>Exception</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveCitationCount">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveAbstract" id="_retrieveAbstract">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#206-223" title="Go to source code">retrieveAbstract</a>(<span><var>$scopusId</var></span>, <span>array <var>$options</var> = []</span>): <a href="Scopus.Response.Abstracts.html"><span title="Scopus\Response\Abstracts">Abstracts</span></a>|<a href="Scopus.Response.Abstracts.html"><span title="Scopus\Response\Abstracts">Abstracts</span></a>[]</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Exception.html"><span>Exception</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveAbstract">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveAbstracts" id="_retrieveAbstracts">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#225-250" title="Go to source code">retrieveAbstracts</a>(<span><var>$scopusIds</var></span>, <span>array <var>$options</var> = []</span>): <a href="Scopus.Response.Abstracts.html"><span title="Scopus\Response\Abstracts">Abstracts</span></a>[]</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveAbstracts">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveAuthor" id="_retrieveAuthor">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#252-271" title="Go to source code">retrieveAuthor</a>(<span><var>$authorId</var></span>, <span>array <var>$options</var> = []</span>): <a href="Scopus.Response.Author.html"><span title="Scopus\Response\Author">Author</span></a>|<a href="Scopus.Response.Author.html"><span title="Scopus\Response\Author">Author</span></a>[]</code>
+
+
+	<div class="expandable-collapsedView">
+		Retrieve an author with
+https://dev.elsevier.com/documentation/AuthorRetrievalAPI.wadl
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>Retrieve an author with
+<a href="https://dev.elsevier.com/documentation/AuthorRetrievalAPI.wadl">https://dev.elsevier.com/documentation/AuthorRetrievalAPI.wadl</a></p>
+</div>
+
+							<h4>Parameters</h4>
+							<table>
+									<tr>
+										<td><var>$options</var>&nbsp;&nbsp;</td>
+										<td><p>-&gt; ['view'=&gt;'ENHANCED'] <a href="https://dev.elsevier.com/guides/AuthorRetrievalViews.htm">https://dev.elsevier.com/guides/AuthorRetrievalViews.htm</a></p>
+</td>
+									</tr>
+							</table>
+
+							<h4>Returns</h4>
+							<div><p>an Author returns</p>
+</div>
+
+							<h4>Throws</h4>
+							<table>
+									<tr>
+										<td><code><a href="Exception.html"><span>Exception</span></a></code>&nbsp;</td>
+										<td></td>
+									</tr>
+							</table>
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveAuthor">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveAuthors" id="_retrieveAuthors">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#273-297" title="Go to source code">retrieveAuthors</a>(<span><var>$authorIds</var></span>, <span>array <var>$options</var> = []</span>): <a href="Scopus.Response.Author.html"><span title="Scopus\Response\Author">Author</span></a>[]</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveAuthors">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveAffiliation" id="_retrieveAffiliation">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#299-302" title="Go to source code">retrieveAffiliation</a>(<span><var>$affiliationId</var></span>, <span>array <var>$options</var> = []</span>)</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveAffiliation">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="retrieveDocumentsAuthor" id="_retrieveDocumentsAuthor">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.ScopusApi.html#304-337" title="Go to source code">retrieveDocumentsAuthor</a>(
+	<span>string <var>$authorId</var></span>,
+	<span>string|null <var>$startYear</var> = <span class="php-kw">null</span></span>,
+	<span>string|null <var>$endYear</var> = <span class="php-kw">null</span></span>,
+	<span>bool <var>$jrDocument</var> = <span class="php-kw">false</span></span>,
+): <a href="Scopus.Response.Entry.html"><span title="Scopus\Response\Entry">Entry</span></a>[]</code>
+
+
+	<div class="expandable-collapsedView">
+		I recover the documents of a specific Author with
+https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl
+cursor…
+	</div>
+
+	<div class="expandable-expandedView">
+	<div class="description"><p>I recover the documents of a specific Author with
+<a href="https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl">https://dev.elsevier.com/documentation/ScopusSearchAPI.wadl</a>
+cursor next = prendo i successivi 25</p>
+<p>I can set a search range: startYear &lt; AnnoDocumento &lt; endYear
+! Warning: do not startYear &lt;= Document Year &lt;= endYear</p>
+</div>
+
+							<h4>Parameters</h4>
+							<table>
+									<tr>
+										<td><var>$authorId</var>&nbsp;&nbsp;</td>
+										<td><p>AUTHOR_ID</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$startYear</var>&nbsp;&nbsp;</td>
+										<td><p>Start year range</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$endYear</var>&nbsp;&nbsp;</td>
+										<td><p>End of range year</p>
+</td>
+									</tr>
+									<tr>
+										<td><var>$jrDocument</var>&nbsp;&nbsp;</td>
+										<td><p>If I only want items of type j or r</p>
+</td>
+									</tr>
+							</table>
+
+							<h4>Returns</h4>
+							<div><p>Return all articles by the selected author <a href="https://dev.elsevier.com/guides/ScopusSearchViews.htm">https://dev.elsevier.com/guides/ScopusSearchViews.htm</a></p>
+</div>
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_retrieveDocumentsAuthor">#</a>
+		</td>
+	</tr>
+		</table>
+
+
+
+		<table class="table" id="constants">
+			<tr>
+				<th class="table-heading sortable" colspan="3" title="Switch between natural and alphabetical order">Constants</th>
+			</tr>
+
+	<tr class="expandable collapsed" data-order="SEARCH_URI" id="SEARCH_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#20" title="Go to source code">SEARCH_URI</a> = <span class="php-str">'https://api.elsevier.com/content/search/scopus'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#SEARCH_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="ABSTRACT_URI" id="ABSTRACT_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#21" title="Go to source code">ABSTRACT_URI</a> = <span class="php-str">'https://api.elsevier.com/content/abstract/scopus_id/'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#ABSTRACT_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="AUTHOR_URI" id="AUTHOR_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#22" title="Go to source code">AUTHOR_URI</a> = <span class="php-str">'https://api.elsevier.com/content/author/author_id/'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#AUTHOR_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="AFFILIATION_URI" id="AFFILIATION_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#23" title="Go to source code">AFFILIATION_URI</a> = <span class="php-str">'https://api.elsevier.com/content/affiliation/affiliation_id/'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#AFFILIATION_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="SEARCH_AUTHOR_URI" id="SEARCH_AUTHOR_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#24" title="Go to source code">SEARCH_AUTHOR_URI</a> = <span class="php-str">'https://api.elsevier.com/content/search/author'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#SEARCH_AUTHOR_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="CITATION_OVERVIEW_URI" id="CITATION_OVERVIEW_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#25" title="Go to source code">CITATION_OVERVIEW_URI</a> = <span class="php-str">'https://api.elsevier.com/content/abstract/citations'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#CITATION_OVERVIEW_URI">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="CITATION_COUNT_URI" id="CITATION_COUNT_URI">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+				</code>
+			</td>
+
+			<td class="table-cell">
+<code><a href="source-Scopus.ScopusApi.html#26" title="Go to source code">CITATION_COUNT_URI</a> = <span class="php-str">'https://api.elsevier.com/content/abstract/citation-count'</span></code>
+
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#CITATION_COUNT_URI">#</a>
+		</td>
+	</tr>
+		</table>
+
+
+
+
+
+		</div>
+
+		<div class="layout-footer">
+			 API documentation generated by <a href="https://www.apigen.org">ApiGen dev-master</a>
+		</div>
+	</div>
+
+	<div class="layout-rest">
+		<div class="navbar"></div>
+	</div>
+</body>
+</html>

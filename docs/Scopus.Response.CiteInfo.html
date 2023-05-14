@@ -1,0 +1,754 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>Class Scopus\Response\CiteInfo |  API</title>
+	<link rel="stylesheet" href="assets/main.css">
+	<script src="assets/main.js" defer></script>
+</head>
+
+<body class="layout">
+	<div class="layout-aside">
+	<div class="menu">
+			<div class="menu-section">
+				<h3>Namespaces</h3>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Scopus.html">Scopus</a>
+	<ul>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Exception.html">Exception</a>
+			</li>
+			<li class="menuGroup-item active">
+				<a href="namespace-Scopus.Response.html">Response</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Util.html">Util</a>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</div>
+
+		<div class="menu-section">
+			<h3>Classes</h3>
+			<ul>
+					<li>
+						<a href="Scopus.Response.AbstractAuthor.html">
+							AbstractAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractCitations.html">
+							AbstractCitations
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractCoredata.html">
+							AbstractCoredata
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractItem.html">
+							AbstractItem
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Abstracts.html">
+							Abstracts
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Affiliation.html">
+							Affiliation
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Author.html">
+							Author
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorAffiliation.html">
+							AuthorAffiliation
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorCoredata.html">
+							AuthorCoredata
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorGroup.html">
+							AuthorGroup
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorName.html">
+							AuthorName
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorProfile.html">
+							AuthorProfile
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorSubjectArea.html">
+							AuthorSubjectArea
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.BaseLinks.html">
+							BaseLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Bibrecord.html">
+							Bibrecord
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.BibrecordHead.html">
+							BibrecordHead
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CitationCount.html">
+							CitationCount
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CitationCountLinks.html">
+							CitationCountLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CiteCountHeader.html">
+							CiteCountHeader
+						</a>
+					</li>
+					<li class="active">
+						<a href="Scopus.Response.CiteInfo.html">
+							CiteInfo
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Correspondence.html">
+							Correspondence
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CorrespondencePerson.html">
+							CorrespondencePerson
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Entry.html">
+							Entry
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.EntryAuthor.html">
+							EntryAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.EntryLinks.html">
+							EntryLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Journal.html">
+							Journal
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.SearchLinks.html">
+							SearchLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.SearchResults.html">
+							SearchResults
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Source.html">
+							Source
+						</a>
+					</li>
+			</ul>
+		</div>
+		<div class="menu-section">
+			<h3>Interfaces</h3>
+			<ul>
+					<li>
+						<a href="Scopus.Response.IAbstract.html">
+							IAbstract
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.IAuthor.html">
+							IAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.IAuthorName.html">
+							IAuthorName
+						</a>
+					</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+	<div class="layout-main">
+		<div class="layout-navbar">
+	<nav class="navbar">
+		<div class="navbar-left">
+			<ul class="navbar-links">
+				<li>
+					<a href="index.html">Overview</a>
+				</li>
+				<li>
+					
+						<a href="namespace-Scopus.Response.html">Namespace</a>
+					
+				</li>
+<li class="active"><a href="Scopus.Response.CiteInfo.html">Class</a></li>				<li>
+					<a href="tree.html">Tree</a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-right">
+	<div class="search" data-elements="assets/elements.js">
+		<input class="search-input" placeholder="Search class, function or namespace" autofocus>
+		<ul class="search-results"></ul>
+	</div>
+		</div>
+	</nav>
+		</div>
+
+		<div class="layout-content">
+		<h1>
+			Class <a href="namespace-Scopus.html">Scopus</a>\<a href="namespace-Scopus.Response.html">Response</a>\<a href="Scopus.Response.CiteInfo.html">CiteInfo</a>
+		</h1>
+
+
+	<table class="classLikeSignatureTable">
+
+
+
+		<tr>
+			<th><code>extends</code></th>
+			<td>
+<code><a href="Scopus.Response.AbstractCoredata.html"><span title="Scopus\Response\AbstractCoredata">AbstractCoredata</span></a></code>			</td>
+		</tr>
+		<tr>
+			<th><code>implements</code></th>
+			<td>
+<code><a href="Scopus.Response.IAbstract.html"><span title="Scopus\Response\IAbstract">IAbstract</span></a></code>			</td>
+		</tr>
+
+	</table>
+
+			<div class="classLikeSection">
+	<ul class="classTree">
+	<li>
+<a href="Scopus.Response.AbstractCoredata.html"><span>Scopus\Response\AbstractCoredata</span></a>
+
+
+	<ul class="classTree">
+	<li>
+<b><span class="active">Scopus\Response\CiteInfo</span></b>
+
+		implements
+			<a href="Scopus.Response.IAbstract.html"><span title="Scopus\Response\IAbstract">IAbstract</span></a>
+
+	</li>
+	</ul>
+	</li>
+	</ul>
+			</div>
+
+		<div class="classLikeSection">
+			<b>Located at</b> <a href="source-Scopus.Response.CiteInfo.html#5" title="Go to source code">Scopus/Response/CiteInfo.php</a><br>
+		</div>
+
+
+
+		<table class="table" id="methods">
+			<tr>
+				<th class="table-heading sortable" colspan="3" title="Switch between natural and alphabetical order">Methods</th>
+			</tr>
+
+	<tr class="expandable collapsed" data-order="__construct" id="___construct">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#20-23" title="Go to source code">__construct</a>(<span>array <var>$data</var></span>)</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+		<h4>Overrides</h4>
+		<ul>
+				<li>
+<a href="Scopus.Response.AbstractCoredata.html#___construct">						<code>Scopus\Response\AbstractCoredata::__construct()</code></a>				</li>
+		</ul>
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#___construct">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getAuthors" id="_getAuthors">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#25-41" title="Go to source code">getAuthors</a>(): <a href="Scopus.Response.EntryAuthor.html"><span title="Scopus\Response\EntryAuthor">EntryAuthor</span></a>[]|null</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+		<h4>Implements</h4>
+		<ul>
+				<li>
+<a href="Scopus.Response.IAbstract.html#_getAuthors">						<code>Scopus\Response\IAbstract::getAuthors()</code></a>				</li>
+		</ul>
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getAuthors">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getCitationType" id="_getCitationType">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#43-46" title="Go to source code">getCitationType</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getCitationType">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getCitationTypeCode" id="_getCitationTypeCode">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#48-51" title="Go to source code">getCitationTypeCode</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getCitationTypeCode">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getSortYear" id="_getSortYear">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#53-56" title="Go to source code">getSortYear</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getSortYear">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getStartingPage" id="_getStartingPage">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#58-61" title="Go to source code">getStartingPage</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getStartingPage">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getEndingPage" id="_getEndingPage">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#63-66" title="Go to source code">getEndingPage</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getEndingPage">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getPreviousColumnCount" id="_getPreviousColumnCount">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#68-75" title="Go to source code">getPreviousColumnCount</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getPreviousColumnCount">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getColumnCount" id="_getColumnCount">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#77-80" title="Go to source code">getColumnCount</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getColumnCount">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getLaterColumnCount" id="_getLaterColumnCount">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#82-85" title="Go to source code">getLaterColumnCount</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getLaterColumnCount">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getRangeCount" id="_getRangeCount">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#87-90" title="Go to source code">getRangeCount</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getRangeCount">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="getRowTotal" id="_getRowTotal">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+					
+	public
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell">
+				<code><a href="source-Scopus.Response.CiteInfo.html#92-95" title="Go to source code">getRowTotal</a>()</code>
+
+
+
+	<div class="expandable-expandedView">
+
+
+
+
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#_getRowTotal">#</a>
+		</td>
+	</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<th class="table-heading">Methods inherited from <a href="Scopus.Response.AbstractCoredata.html"><span>Scopus\Response\AbstractCoredata</span></a></th>
+			</tr>
+			<tr>
+				<td class="table-cell">
+<code><a href="Scopus.Response.AbstractCoredata.html#_getUrl">getUrl()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getIdentifier">getIdentifier()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getScopusId">getScopusId()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getEid">getEid()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getTitle">getTitle()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getPublicationName">getPublicationName()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getEIssn">getEIssn()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getVolume">getVolume()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getPageRange">getPageRange()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getCoverDate">getCoverDate()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getDoi">getDoi()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getPubmedId">getPubmedId()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getArticleNumber">getArticleNumber()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getDescription">getDescription()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getCitedbyCount">getCitedbyCount()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getAggregationType">getAggregationType()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getFundSponsor">getFundSponsor()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getStartPage">getStartPage()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getEndPage">getEndPage()</a>, <a href="Scopus.Response.AbstractCoredata.html#_getIssn">getIssn()</a>, <a href="Scopus.Response.AbstractCoredata.html#_hasError">hasError()</a></code>				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<table class="table" id="properties">
+			<tr>
+				<th class="table-heading sortable" colspan="4" title="Switch between natural and alphabetical order">Properties</th>
+			</tr>
+
+	<tr class="expandable collapsed" data-order="data" id="$data">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+	protected
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell table-shrink">
+				<code class="nowrap">array</code>
+			</td>
+
+			<td class="table-cell">
+<code><var><a href="source-Scopus.Response.CiteInfo.html#7-8" title="Go to source code">$data</a></var></code>
+				
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#$data">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="affiliations" id="$affiliations">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+	protected
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell table-shrink">
+				<code class="nowrap"><a href="Scopus.Response.Affiliation.html"><span title="Scopus\Response\Affiliation">Affiliation</span></a>[]</code>
+			</td>
+
+			<td class="table-cell">
+<code><var><a href="source-Scopus.Response.CiteInfo.html#10-11" title="Go to source code">$affiliations</a></var></code>
+				
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#$affiliations">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="authors" id="$authors">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+	protected
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell table-shrink">
+				<code class="nowrap"><a href="Scopus.Response.EntryAuthor.html"><span title="Scopus\Response\EntryAuthor">EntryAuthor</span></a>[]</code>
+			</td>
+
+			<td class="table-cell">
+<code><var><a href="source-Scopus.Response.CiteInfo.html#13-14" title="Go to source code">$authors</a></var></code>
+				
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#$authors">#</a>
+		</td>
+	</tr>
+	<tr class="expandable collapsed" data-order="preferredName" id="$preferredName">
+			<td class="table-cell table-shrink">
+				<code class="nowrap">
+	protected
+					
+					
+				</code>
+			</td>
+
+			<td class="table-cell table-shrink">
+				<code class="nowrap"><a href="Scopus.Response.AuthorName.html"><span title="Scopus\Response\AuthorName">AuthorName</span></a>[]</code>
+			</td>
+
+			<td class="table-cell">
+<code><var><a href="source-Scopus.Response.CiteInfo.html#16-18" title="Go to source code">$preferredName</a></var></code>
+				
+
+	<div class="expandable-expandedView">
+	</div>
+			</td>
+		<td class="table-anchor">
+			<a href="#$preferredName">#</a>
+		</td>
+	</tr>
+		</table>
+
+
+
+
+
+
+		</div>
+
+		<div class="layout-footer">
+			 API documentation generated by <a href="https://www.apigen.org">ApiGen dev-master</a>
+		</div>
+	</div>
+
+	<div class="layout-rest">
+		<div class="navbar"></div>
+	</div>
+</body>
+</html>

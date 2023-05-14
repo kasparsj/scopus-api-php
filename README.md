@@ -19,10 +19,11 @@ Currently, supported APIs:
 
 ```php
 use Scopus\ScopusApi;
+use Scopus\ScopusApiFactory;
 
 // replace with your API key
 $apiKey = "114ff0c3b57a0ec62e15efdedefd2e6f";
-$api = new ScopusApi($apiKey);
+$api = (new ScopusApiFactory($apiKey))->createApiClient();
 
 // Scopus Search API
 $results = $api
@@ -59,10 +60,13 @@ foreach ($results->getEntries() as $entry) {
 https://kasparsj.github.io/scopus-api-php/
 
 ## Changelog
+- 14/06/2023 - v1.4
+  * Added institution token support
+  * Updated GuzzleHttp to the latest version (7.6)
 - 01/05/2022 - v1.3
   * Added Abstract Citations Count API
 - 14/11/2021 - v1.2
-  *  Bug fix
+  * Bug fix
 - 19/05/2020 - v1.1
   * Added Search Author API
   * Added Citation Overview API
