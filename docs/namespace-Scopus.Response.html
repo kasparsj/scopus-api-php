@@ -1,232 +1,396 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 
-	<title>Namespace Scopus\Response</title>
-
-	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
-
+	<title>Namespace Scopus\Response |  API</title>
+	<link rel="stylesheet" href="assets/main.css">
+	<script src="assets/main.js" defer></script>
 </head>
 
-<body>
-<div id="left">
-	<div id="menu">
-		<a href="index.html" title="Overview"><span>Overview</span></a>
-
-
-		<div id="groups">
+<body class="layout">
+	<div class="layout-aside">
+	<div class="menu">
+			<div class="menu-section">
 				<h3>Namespaces</h3>
-			<ul>
-				<li class="active">
-					<a href="namespace-Scopus.html">
-						Scopus<span></span>
-					</a>
+	<ul>
+			<li class="menuGroup-item active">
+				<a href="namespace-Scopus.html">Scopus</a>
+	<ul>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Exception.html">Exception</a>
+			</li>
+			<li class="menuGroup-item active">
+				<a href="namespace-Scopus.Response.html">Response</a>
+			</li>
+			<li class="menuGroup-item">
+				<a href="namespace-Scopus.Util.html">Util</a>
+			</li>
+	</ul>
+			</li>
+	</ul>
+			</div>
 
-						<ul>
-				<li>
-					<a href="namespace-Scopus.Exception.html">
-						Exception					</a>
-
-						</li>
-				<li class="active">
-					<a href="namespace-Scopus.Response.html">
-						Response					</a>
-
-						</li>
-				<li>
-					<a href="namespace-Scopus.Util.html">
-						Util					</a>
-
-						</li>
-							</ul></li>
-			</ul>
-		</div>
-
-		<hr>
-
-
-		<div id="elements">
+		<div class="menu-section">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Scopus.Response.AbstractAuthor.html">AbstractAuthor</a></li>
-				<li><a href="class-Scopus.Response.AbstractCoredata.html">AbstractCoredata</a></li>
-				<li><a href="class-Scopus.Response.AbstractItem.html">AbstractItem</a></li>
-				<li><a href="class-Scopus.Response.Abstracts.html">Abstracts</a></li>
-				<li><a href="class-Scopus.Response.Affiliation.html">Affiliation</a></li>
-				<li><a href="class-Scopus.Response.Author.html">Author</a></li>
-				<li><a href="class-Scopus.Response.AuthorGroup.html">AuthorGroup</a></li>
-				<li><a href="class-Scopus.Response.AuthorName.html">AuthorName</a></li>
-				<li><a href="class-Scopus.Response.AuthorProfile.html">AuthorProfile</a></li>
-				<li><a href="class-Scopus.Response.BaseLinks.html">BaseLinks</a></li>
-				<li><a href="class-Scopus.Response.Bibrecord.html">Bibrecord</a></li>
-				<li><a href="class-Scopus.Response.BibrecordHead.html">BibrecordHead</a></li>
-				<li><a href="class-Scopus.Response.Correspondence.html">Correspondence</a></li>
-				<li><a href="class-Scopus.Response.CorrespondencePerson.html">CorrespondencePerson</a></li>
-				<li><a href="class-Scopus.Response.Entry.html">Entry</a></li>
-				<li><a href="class-Scopus.Response.EntryAuthor.html">EntryAuthor</a></li>
-				<li><a href="class-Scopus.Response.EntryLinks.html">EntryLinks</a></li>
-				<li><a href="class-Scopus.Response.SearchLinks.html">SearchLinks</a></li>
-				<li><a href="class-Scopus.Response.SearchResults.html">SearchResults</a></li>
-				<li><a href="class-Scopus.Response.Source.html">Source</a></li>
+					<li>
+						<a href="Scopus.Response.AbstractAuthor.html">
+							AbstractAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractCitations.html">
+							AbstractCitations
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractCoredata.html">
+							AbstractCoredata
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AbstractItem.html">
+							AbstractItem
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Abstracts.html">
+							Abstracts
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Affiliation.html">
+							Affiliation
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Author.html">
+							Author
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorAffiliation.html">
+							AuthorAffiliation
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorCoredata.html">
+							AuthorCoredata
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorGroup.html">
+							AuthorGroup
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorName.html">
+							AuthorName
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorProfile.html">
+							AuthorProfile
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.AuthorSubjectArea.html">
+							AuthorSubjectArea
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.BaseLinks.html">
+							BaseLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Bibrecord.html">
+							Bibrecord
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.BibrecordHead.html">
+							BibrecordHead
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CitationCount.html">
+							CitationCount
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CitationCountLinks.html">
+							CitationCountLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CiteCountHeader.html">
+							CiteCountHeader
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CiteInfo.html">
+							CiteInfo
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Correspondence.html">
+							Correspondence
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.CorrespondencePerson.html">
+							CorrespondencePerson
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Entry.html">
+							Entry
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.EntryAuthor.html">
+							EntryAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.EntryLinks.html">
+							EntryLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Journal.html">
+							Journal
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.SearchLinks.html">
+							SearchLinks
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.SearchResults.html">
+							SearchResults
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.Source.html">
+							Source
+						</a>
+					</li>
 			</ul>
-
+		</div>
+		<div class="menu-section">
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-Scopus.Response.IAbstract.html">IAbstract</a></li>
-				<li><a href="class-Scopus.Response.IAuthor.html">IAuthor</a></li>
-				<li><a href="class-Scopus.Response.IAuthorName.html">IAuthorName</a></li>
+					<li>
+						<a href="Scopus.Response.IAbstract.html">
+							IAbstract
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.IAuthor.html">
+							IAuthor
+						</a>
+					</li>
+					<li>
+						<a href="Scopus.Response.IAuthorName.html">
+							IAuthorName
+						</a>
+					</li>
 			</ul>
-
-
-
-
 		</div>
 	</div>
-</div>
-
-<div id="splitter"></div>
-
-<div id="right">
-<div id="rightInner">
-	<form id="search">
-		<input type="hidden" name="cx" value="">
-		<input type="hidden" name="ie" value="UTF-8">
-		<input type="text" name="q" class="text" placeholder="Search">
-	</form>
-
-	<div id="navigation">
-		<ul>
-			<li>
-				<a href="index.html" title="Overview"><span>Overview</span></a>
-			</li>
-			<li class="active">
-<span>Namespace</span>			</li>
-			<li>
-<span>Class</span>			</li>
-		</ul>
-		<ul>
-		</ul>
-		<ul>
-		</ul>
 	</div>
 
-<div id="content" class="namespace">
-	<h1>Namespace <a href="namespace-Scopus.html">Scopus</a>\Response</h1>
-
-
-
-<table class="summary" id="classes">
-<caption>Classes summary</caption>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AbstractAuthor.html">AbstractAuthor</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AbstractCoredata.html">AbstractCoredata</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AbstractItem.html">AbstractItem</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Abstracts.html">Abstracts</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Affiliation.html">Affiliation</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Author.html">Author</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AuthorGroup.html">AuthorGroup</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AuthorName.html">AuthorName</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.AuthorProfile.html">AuthorProfile</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.BaseLinks.html">BaseLinks</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Bibrecord.html">Bibrecord</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.BibrecordHead.html">BibrecordHead</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Correspondence.html">Correspondence</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.CorrespondencePerson.html">CorrespondencePerson</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Entry.html">Entry</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.EntryAuthor.html">EntryAuthor</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.EntryLinks.html">EntryLinks</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.SearchLinks.html">SearchLinks</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.SearchResults.html">SearchResults</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.Source.html">Source</a></td>
-	<td></td>
-</tr>
-</table>
-
-<table class="summary" id="interfaces">
-<caption>Interfaces summary</caption>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.IAbstract.html">IAbstract</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.IAuthor.html">IAuthor</a></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Scopus.Response.IAuthorName.html">IAuthorName</a></td>
-	<td></td>
-</tr>
-</table>
-
-
-
-
-</div>
-
-	<div id="footer">
-		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	<div class="layout-main">
+		<div class="layout-navbar">
+	<nav class="navbar">
+		<div class="navbar-left">
+			<ul class="navbar-links">
+				<li>
+					<a href="index.html">Overview</a>
+				</li>
+				<li class="active">
+					
+						<a href="namespace-Scopus.Response.html">Namespace</a>
+					
+				</li>
+<li><span>Class</span></li>				<li>
+					<a href="tree.html">Tree</a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-right">
+	<div class="search" data-elements="assets/elements.js">
+		<input class="search-input" placeholder="Search class, function or namespace" autofocus>
+		<ul class="search-results"></ul>
 	</div>
-</div>
-</div>
-<script src="resources/combined.js?cd021bc814832c24a7cec5319ea03335bfba1caf"></script>
-<script src="elementlist.js?b70e5d26700b94289804133a1702a0ee4b5fa705"></script>
+		</div>
+	</nav>
+		</div>
+
+		<div class="layout-content">
+		<h1>Namespace <a href="namespace-Scopus.html">Scopus</a>\<a href="namespace-Scopus.Response.html">Response</a></h1>
+
+	<table class="table elementSummary">
+		<tr>
+			<th class="table-heading" colspan="2">Classes</th>
+		</tr>
+
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AbstractAuthor.html">AbstractAuthor</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AbstractCitations.html">AbstractCitations</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AbstractCoredata.html">AbstractCoredata</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AbstractItem.html">AbstractItem</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Abstracts.html">Abstracts</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Affiliation.html">Affiliation</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Author.html">Author</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorAffiliation.html">AuthorAffiliation</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorCoredata.html">AuthorCoredata</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorGroup.html">AuthorGroup</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorName.html">AuthorName</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorProfile.html">AuthorProfile</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.AuthorSubjectArea.html">AuthorSubjectArea</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.BaseLinks.html">BaseLinks</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Bibrecord.html">Bibrecord</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.BibrecordHead.html">BibrecordHead</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.CitationCount.html">CitationCount</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.CitationCountLinks.html">CitationCountLinks</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.CiteCountHeader.html">CiteCountHeader</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.CiteInfo.html">CiteInfo</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Correspondence.html">Correspondence</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.CorrespondencePerson.html">CorrespondencePerson</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Entry.html">Entry</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.EntryAuthor.html">EntryAuthor</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.EntryLinks.html">EntryLinks</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Journal.html">Journal</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.SearchLinks.html">SearchLinks</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.SearchResults.html">SearchResults</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.Source.html">Source</a></td>
+				<td class="table-cell"></td>
+			</tr>
+
+		<tr>
+			<td class="table-spacer" colspan="2"></td>
+		</tr>
+		<tr>
+			<th class="table-heading" colspan="2">Interfaces</th>
+		</tr>
+
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.IAbstract.html">IAbstract</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.IAuthor.html">IAuthor</a></td>
+				<td class="table-cell"></td>
+			</tr>
+			<tr>
+				<td class="table-cell" colspan="1"><a href="Scopus.Response.IAuthorName.html">IAuthorName</a></td>
+				<td class="table-cell"></td>
+			</tr>
+
+		<tr>
+			<td class="table-spacer" colspan="2"></td>
+		</tr>
+	</table>
+		</div>
+
+		<div class="layout-footer">
+			 API documentation generated by <a href="https://www.apigen.org">ApiGen dev-master</a>
+		</div>
+	</div>
+
+	<div class="layout-rest">
+		<div class="navbar"></div>
+	</div>
 </body>
 </html>
