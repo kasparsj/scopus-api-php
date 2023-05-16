@@ -22,6 +22,7 @@ class ScopusApi
     const SEARCH_AUTHOR_URI = 'https://api.elsevier.com/content/search/author';
     const CITATION_OVERVIEW_URI = 'https://api.elsevier.com/content/abstract/citations';
     const CITATION_COUNT_URI = 'https://api.elsevier.com/content/abstract/citation-count';
+    const SERIAL_TITLE_URI = 'https://api.elsevier.com/content/serial/title';
     const TIMEOUT = 40.0;
 
     protected $apiKey;
