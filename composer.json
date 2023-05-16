@@ -1,0 +1,25 @@
+{
+  "name": "kasparsj/scopus-search-api",
+  "description": "Scopus API for PHP (Unofficial)",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "version": "1.3",
+  "authors": [
+    {
+      "name": "Kaspars Jaudzems",
+      "email": "kasparsj@gmail.com"
+    },
+    {
+      "name": "Antonino Bonanno",
+      "email": "nino.bonanno96@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": ">=6.3.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Scopus\\": "src/"
+    }
+  }
+}
