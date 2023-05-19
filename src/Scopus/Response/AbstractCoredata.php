@@ -70,6 +70,11 @@ class AbstractCoredata
         return isset($this->data['prism:doi']) ? $this->data['prism:doi'] : null;
     }
 
+    public function getSourceId()
+    {
+        return isset($this->data['source-id']) ? $this->data['source-id'] : null;
+    }
+
     public function getPubmedId()
     {
         return isset($this->data['pubmed-id']) ? $this->data['pubmed-id'] : null;
