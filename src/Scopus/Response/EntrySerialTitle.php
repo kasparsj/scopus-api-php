@@ -24,11 +24,11 @@ class EntrySerialTitle
 
     public function getCoverageStartYear()
     {
-        return isset($this->data['dc:coverageStartYear']) ? $this->data['dc:coverageStartYear'] : null;
+        return isset($this->data['coverageStartYear']) ? $this->data['coverageStartYear'] : null;
     }
 
     public function getCoverageEndYear()
     {
-        return isset($this->data['dc:coverageEndYear']) ? $this->data['dc:coverageEndYear'] : null;
+        return isset($this->data['coverageEndYear']) ? $this->data['coverageEndYear'] : null;
     }
 }
