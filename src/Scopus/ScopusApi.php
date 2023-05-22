@@ -227,19 +227,6 @@ class ScopusApi
         ]);
     }
 
-    public function retrieveSerialMetadata($issn, array $options = [])
-    {
-        if (is_array($issn)) {
-            $issn = implode(',', $issn);
-        }
-
-        $options['issn'] = $issn;
-
-        return $this->retrieve(self::SERIAL_TITLE_URI, [
-            'query' => $options
-        ]);
-    }
-
     /**
      * @param $scopusId
      * @param array $options
@@ -366,5 +353,30 @@ class ScopusApi
             $numDocument -= $searchResults->countEntries();
         }
         return $documents;
+    }
+
+    /**
+     * Retrieve Serial Title data by issn using Scopus Serial Metadata API
+     * @see https://dev.elsevier.com/documentation/SerialTitleAPI.wadl
+     *
+     * @param $issn issn or eIssn of publication
+     * @param array $options
+     * @return SerialMetaData[]
+     * @throws Exception
+     */
+    public function retrieveSerialMetadata($issn, array $options = [])
+    {
+        if (is_array($issn)) {
+            $issn = implode(',', $issn);
+        }
+        if (count(explode(',', $issn)) > 25) {
+            throw new Exception("The maximum number of 25 issn's exceeded!");
+        }
+
+        $options['issn'] = $issn;
+
+        return $this->retrieve(self::SERIAL_TITLE_URI, [
+            'query' => $options
+        ]);
     }
 }
